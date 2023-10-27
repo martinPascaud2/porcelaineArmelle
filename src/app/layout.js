@@ -18,8 +18,9 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${inter.className} bg-terra-100 relative`}>
         <Background />
-        <Navbar />
+        <Navbar className="" />
         {children}
+        <div>coucou</div>
       </body>
     </html>
   );

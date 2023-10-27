@@ -1,5 +1,5 @@
 import Image from "next/image";
-import terracotta_background from "../../public/terracotta_background.jpg";
+import terracotta_background from "../../public/terracotta_background5.jpg";
 
 export default function Background() {
   return (
