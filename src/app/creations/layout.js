@@ -3,6 +3,7 @@ import Image from "next/image";
 import { inter, amatic } from "@/assets/fonts";
 import verseuses from "/public/verseuses.jpeg";
 import couleeverte from "/public/coulée verte.jpeg";
+import truc from "/public/truc.jpeg";
 
 import CldImage from "@/components/CloudImage";
 
@@ -76,7 +77,7 @@ export default function CreationsLayout({ children }) {
             className={`${inter.className}  bg-terra-100  rounded-lg text-sm font-medium   flex   transition	ease-in-out delay-0 duration-300`}
           >
             <Image
-              src={couleeverte}
+              src={truc}
               quality={100}
               //   fill
               //   priority
@@ -102,7 +103,7 @@ export default function CreationsLayout({ children }) {
           <div
             className={`absolute top-1/2 text-5xl text-slate-300  ${amatic.className}`}
           >
-            Coulée verte
+            Truc
           </div>
         </div>
         {/* <div className="w-64 h-36 relative border border-slate-300 rounded-lg text-sm font-medium text-slate-400 hover:border-slate-400 hover:text-slate-500  flex justify-center shadow shadow-slate-400 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none">

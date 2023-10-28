@@ -11,6 +11,7 @@ export async function middleware(request) {
         new URL("/connect?page=editArticles", request.url)
       );
     }
+    console.log("request ici", request);
 
     const { userStatus } = await jwtVerify(token);
 
