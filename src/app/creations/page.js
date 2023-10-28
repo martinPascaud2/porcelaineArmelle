@@ -12,7 +12,8 @@ import { amatic, inter, roboto, ibm } from "@/assets/fonts";
 import Link from "next/link";
 
 import Carousel from "@/components/Carousel";
-import { Container } from "postcss";
+
+import Modal from "./modal";
 
 const Card = ({ image }) => {
   return (
@@ -45,7 +46,7 @@ const Card = ({ image }) => {
 
         <div className="flex flex-inline ">
           <Link
-            href="/contact"
+            href="/creations?modal=1#TEST"
             className={`${inter.className} bg-terra-100 border border-slate-300 rounded-lg rounded-md mx-4 my-2 px-3 py-2 text-sm font-medium text-slate-400 hover:border-slate-400 hover:text-slate-500 basis-20 flex justify-center shadow shadow-slate-400 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
           >
             Voir
@@ -62,18 +63,42 @@ const Card = ({ image }) => {
   );
 };
 
-export default async function Page(params) {
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
+
+export default async function Page({ searchParams }) {
+  let articles;
+  try {
+    articles = await prisma.articles.findMany();
+    await prisma.$disconnect();
+  } catch (error) {
+    await prisma.$disconnect();
+    process.exit(1);
+  }
+  console.log("searchParams", searchParams);
+  const modalId = searchParams?.modal;
+  console.log("modalId", modalId);
+
+  //   console.log("articles ici", articles);
   const carouselImages = [limage, limage2, limage4, limage2];
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center gap-x-12 gap-y-10">
-        <Card image={limage2} className="" />
-        <Card image={limage4} />
-        <Card image={rond} />
-        <Card image={bulles} />
-        <Card image={pichet} />
-        <Card image={bol} />
-      </div>
+      {modalId === undefined ? (
+        <div className="mt-3 flex justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center gap-x-12 gap-y-10">
+            <Card image={limage2} className="" />
+            <Card image={limage4} />
+            <Card image={rond} />
+            <Card image={bulles} />
+            <Card image={pichet} />
+            <Card image={bol} />
+          </div>
+        </div>
+      ) : (
+        // <div className="grid grid-cols-1 ">
+        <Modal images={carouselImages} />
+        // </div>
+      )}
       {/* <main className="flex justify-center align-center">
         <div className="grid grid-cols-1 ">
           <Carousel images={carouselImages} className=" " />
