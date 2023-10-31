@@ -6,6 +6,8 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { LogoutButton } from "./LogoutButton";
 
+import { useState } from "react";
+
 export default function Disclosure({ props, MainLogo }) {
   const { signOut, token, userStatus } = props;
   function classNames(...classes) {
@@ -29,8 +31,17 @@ export default function Disclosure({ props, MainLogo }) {
       current: pathname === "/editArticles",
     },
   ];
+
+  const [scrolled, setScrolled] = useState(false);
+  window.addEventListener("scroll", function () {
+    const scrollPosition = window.scrollY;
+    setScrolled(scrollPosition > 100);
+    console.log("scrollPosition", scrollPosition);
+    console.log("scrolled", scrolled);
+  });
+
   return (
-    <Dsclsr as="nav" className="bg-terra-600 sticky top-0">
+    <Dsclsr as="nav" className={`bg-terra-600 sticky top-0  sm:block`}>
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">

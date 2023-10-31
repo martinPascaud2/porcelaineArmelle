@@ -7,6 +7,7 @@ import { amatic } from "@/assets/fonts";
 
 import React from "react";
 import Link from "next/link";
+import { Container } from "postcss";
 
 export default function Carousel({ children, images }) {
   console.log("images", images);
@@ -76,7 +77,7 @@ export default function Carousel({ children, images }) {
       <div
         className={`inner whitespace-nowrap  duration-300 `}
         style={{
-          transform: `translateX(-${activeIndex * 100}%) translateZ(0)`,
+          transform: `translateX(-${activeIndex * 100}%) `,
         }}
       >
         {carouselItems}

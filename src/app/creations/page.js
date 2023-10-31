@@ -84,14 +84,14 @@ export default async function Page({ searchParams }) {
   return (
     <>
       {modalId === undefined ? (
-        <div className="mt-3 flex justify-center">
+        <div className="mt-10 sm:mt-3 flex justify-center">
           <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center gap-x-12 gap-y-10">
             <Card image={limage2} className="" />
-            <Card image={limage4} />
-            <Card image={rond} />
-            <Card image={bulles} />
-            <Card image={pichet} />
-            <Card image={bol} />
+            <Card image={limage4} className="" />
+            <Card image={rond} className="" />
+            <Card image={bulles} className="" />
+            <Card image={pichet} className="" />
+            <Card image={bol} className="" />
           </div>
         </div>
       ) : (
@@ -99,8 +99,8 @@ export default async function Page({ searchParams }) {
         <Modal images={carouselImages} />
         // </div>
       )}
-      {/* <main className="flex justify-center align-center">
-        <div className="grid grid-cols-1 ">
+      {/* <main className=" flex justify-center align-center">
+        <div className="grid grid-cols-1">
           <Carousel images={carouselImages} className=" " />
           <Carousel images={carouselImages} className=" " />
           <Carousel images={carouselImages} className=" " />

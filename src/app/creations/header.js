@@ -13,7 +13,7 @@ import truc from "/public/truc.jpeg";
 import CldImage from "@/components/CloudImage";
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(0);
   window.addEventListener("scroll", function () {
     const scrollPosition = window.scrollY;
     setScrolled(scrollPosition > 100);
@@ -24,7 +24,11 @@ export default function Header() {
   return (
     <header
       id="header"
-      className="sticky top-0 sm:top-16 bg-slate-100 h-44 sm:h-40 border border-terra-500 flex sm:justify-center gap-x-12 items-center overflow-x-auto"
+      className={`${
+        scrolled
+          ? "sm:transform-none transition-transform duration-500 ease-in-out delay-0  -translate-y-full scale-y-0"
+          : "flex"
+      }  sm:flex sticky top-0 sm:top-16 bg-slate-100 h-44 sm:h-40 border border-terra-500  sm:justify-center gap-x-12 items-center overflow-x-auto`}
     >
       <div className="shrink-0 w-64 h-36 relative mt-4 sm:mt-0 border-2 border-terra-500 rounded-lg text-sm font-medium text-slate-400 flex justify-center">
         <Link
@@ -36,7 +40,7 @@ export default function Header() {
             //   priority
             quality={100}
             //   fill
-            //   priority
+            priority
             sizes="100vw"
             alt="Verseuses"
             className="rounded"
@@ -59,7 +63,7 @@ export default function Header() {
         >
           <Image
             src={couleeverte}
-            //   priority
+            priority
             quality={100}
             //   fill
             //   priority
@@ -95,7 +99,7 @@ export default function Header() {
         >
           <Image
             src={truc}
-            //   priority
+            priority
             quality={100}
             sizes="100vw"
             alt="Verseuses"
