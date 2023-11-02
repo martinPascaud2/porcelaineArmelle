@@ -6,7 +6,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { LogoutButton } from "./LogoutButton";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Disclosure({ props, MainLogo }) {
   const { signOut, token, userStatus } = props;
@@ -33,12 +33,20 @@ export default function Disclosure({ props, MainLogo }) {
   ];
 
   const [scrolled, setScrolled] = useState(false);
-  window.addEventListener("scroll", function () {
-    const scrollPosition = window.scrollY;
-    setScrolled(scrollPosition > 100);
-    console.log("scrollPosition", scrollPosition);
-    console.log("scrolled", scrolled);
-  });
+
+  // useEffect(() => {
+  //   const getScroll = () => {
+  //     window.addEventListener("scroll", function () {
+  //       const scrollPosition = window.scrollY;
+  //       setScrolled(scrollPosition > 100);
+  //       console.log("scrollPosition", scrollPosition);
+  //       console.log("scrolled", scrolled);
+  //     });
+  //   };
+  //   if (typeof window !== "undefined") {
+  //     getScroll();
+  //   }
+  // }, []);
 
   return (
     <Dsclsr as="nav" className={`bg-terra-600 sticky top-0  sm:block`}>

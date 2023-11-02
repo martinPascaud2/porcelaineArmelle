@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { inter, amatic } from "@/assets/fonts";
 import verseuses from "/public/verseuses.jpeg";
@@ -14,12 +14,15 @@ import CldImage from "@/components/CloudImage";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(0);
-  window.addEventListener("scroll", function () {
-    const scrollPosition = window.scrollY;
-    setScrolled(scrollPosition > 100);
-    console.log("scrollPosition", scrollPosition);
-    console.log("scrolled", scrolled);
-  });
+  useEffect(() => {
+    const getScroll = () => {
+      window.addEventListener("scroll", function () {
+        const scrollPosition = window.scrollY;
+        setScrolled(scrollPosition > 100);
+      });
+    };
+    getScroll();
+  }, []);
 
   return (
     <header
@@ -50,11 +53,12 @@ export default function Header() {
             }}
           />
         </Link>
-        <div
+        <Link
+          href="/"
           className={`absolute top-1/2 text-5xl text-slate-300 ${amatic.className}`}
         >
           Verseuses
-        </div>
+        </Link>
       </div>
       <div className="shrink-0 w-60 h-32 relative mt-4 sm:mt-0 border hover:border-2 border-slate-300 hover:border-slate-400 hover:scale-[1.12] transition	ease-in-out delay-0 duration-300 rounded-lg font-medium   flex justify-center  ">
         <Link
@@ -86,11 +90,12 @@ export default function Header() {
               className="rounded"
             /> */}
         </Link>
-        <div
+        <Link
+          href="/"
           className={`absolute top-1/2 text-5xl text-slate-300  ${amatic.className}`}
         >
           Coulée verte
-        </div>
+        </Link>
       </div>
       <div className="shrink-0 w-60 h-32 relative mt-4 sm:mt-0 border hover:border-2 border-slate-300 hover:border-slate-400 hover:scale-[1.12] transition	ease-in-out delay-0 duration-300 rounded-lg font-medium   flex justify-center  ">
         <Link
@@ -120,11 +125,12 @@ export default function Header() {
               className="rounded"
             /> */}
         </Link>
-        <div
+        <Link
+          href="/"
           className={`absolute top-1/2 text-5xl text-slate-300  ${amatic.className}`}
         >
           Truc
-        </div>
+        </Link>
       </div>
     </header>
   );

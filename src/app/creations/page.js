@@ -69,7 +69,7 @@ const prisma = new PrismaClient();
 export default async function Page({ searchParams }) {
   let articles;
   try {
-    articles = await prisma.articles.findMany();
+    articles = await prisma.article.findMany();
     await prisma.$disconnect();
   } catch (error) {
     await prisma.$disconnect();

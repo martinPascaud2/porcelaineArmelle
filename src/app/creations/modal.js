@@ -132,10 +132,10 @@ export default function Modal({ children, images }) {
   console.log("carouselItems", carouselItems);
   return (
     <div className="flex">
-      <div className="grid grid-cols-1 justify-end	 w-full sm:w-full md:w-5/6 lg:w-1/4 xl:w-1/3 overflow-hidden  mx-auto ">
+      <div className="grid grid-cols-1 justify-end w-full sm:w-full md:w-5/6 lg:w-1/4 xl:w-1/3 overflow-hidden mx-auto ">
         {/* <div className="carousel  self-center"> */}
         <div
-          className={`inner whitespace-nowrap  duration-300 `}
+          className={`inner whitespace-nowrap duration-300`}
           style={{
             transform: `translateX(-${activeIndex * 100}%) translateZ(0)`,
           }}

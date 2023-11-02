@@ -7,10 +7,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model articles {
-  id              Int       @id @default(autoincrement())
-  titre           String    @db.VarChar(255)
-  contenu         String?   @db.Text
-  datePublication DateTime? @map("date_publication") @db.Date
-  image           String?   @db.VarChar(255)
+model Article {
+  id              Int      @id @default(autoincrement())
+  type            String   @db.VarChar(255)
+  titre           String   @db.VarChar(40)
+  contenu         String?  @db.Text
+  mainImage       String   @db.VarChar(255)
+  imageList       Image[]
+  datePublication DateTime @map("date_publication") @db.Date
+}
+
+model Image {
+  id        Int      @id @default(autoincrement())
+  url       String   @db.VarChar(255)
+  article   Article? @relation(fields: [articleId], references: [id])
+  articleId Int?
 }
