@@ -51,12 +51,6 @@ const Card = ({ image }) => {
           >
             Voir
           </Link>
-          {/* <Link
-              href="/contact"
-              className="bg-terra-100 border border-1 border-slate-300 rounded-lg rounded-md px-3 py-2 text-sm font-medium text-slate-400 hover:border-slate-400 hover:text-slate-500 basis-20 flex justify-center shadow shadow-slate-400 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
-            >
-              Contact
-            </Link> */}
         </div>
       </div>
     </div>
@@ -75,9 +69,8 @@ export default async function Page({ searchParams }) {
     await prisma.$disconnect();
     process.exit(1);
   }
-  console.log("searchParams", searchParams);
+
   const modalId = searchParams?.modal;
-  console.log("modalId", modalId);
 
   //   console.log("articles ici", articles);
   const carouselImages = [limage, limage2, limage4, limage2];
@@ -95,9 +88,7 @@ export default async function Page({ searchParams }) {
           </div>
         </div>
       ) : (
-        // <div className="grid grid-cols-1 ">
         <Modal images={carouselImages} />
-        // </div>
       )}
       {/* <main className=" flex justify-center align-center">
         <div className="grid grid-cols-1">

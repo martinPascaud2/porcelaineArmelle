@@ -46,7 +46,6 @@ const useSwipe = (activeIndex, updateIndex) => {
 export default function Modal({ children, images }) {
   const router = useRouter();
 
-  console.log("images", images);
   const [activeIndex, setActiveIndex] = useState(0);
   const updateIndex = (newIndex) => {
     if (newIndex < 0) {
@@ -61,7 +60,6 @@ export default function Modal({ children, images }) {
     activeIndex,
     updateIndex
   );
-  console.log("activeIndex", activeIndex);
 
   const carouselItems = images.map((image, i) => (
     <div key={i} className="inline-flex">
@@ -129,7 +127,6 @@ export default function Modal({ children, images }) {
     </div>
   ));
 
-  console.log("carouselItems", carouselItems);
   return (
     <div className="flex">
       <div className="grid grid-cols-1 justify-end w-full sm:w-full md:w-5/6 lg:w-1/4 xl:w-1/3 overflow-hidden mx-auto ">

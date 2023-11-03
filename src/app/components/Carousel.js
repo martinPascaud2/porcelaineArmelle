@@ -10,7 +10,6 @@ import Link from "next/link";
 import { Container } from "postcss";
 
 export default function Carousel({ children, images }) {
-  console.log("images", images);
   const [activeIndex, setActiveIndex] = useState(0);
   const updateIndex = (newIndex) => {
     if (newIndex < 0) {
@@ -20,7 +19,6 @@ export default function Carousel({ children, images }) {
     }
     setActiveIndex(newIndex);
   };
-  console.log("activeIndex", activeIndex);
 
   const carouselItems = images.map((image, i) => (
     <div key={i} className="inline-flex">
@@ -70,7 +68,6 @@ export default function Carousel({ children, images }) {
     </div>
   ));
 
-  console.log("carouselItems", carouselItems);
   return (
     <div className="w-full sm:w-full md:w-5/6 lg:w-1/4 xl:w-1/3 overflow-hidden self-center mx-auto ">
       {/* <div className="carousel  self-center"> */}

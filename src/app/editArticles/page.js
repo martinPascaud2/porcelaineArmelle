@@ -4,9 +4,9 @@ import { EditArticleList } from "./EditArticleList";
 export default async function Page() {
   return (
     <>
-      <AddArticleForm />
+      {/* <AddArticleForm /> */}
       <p>-------------</p>
-      <EditArticleList />
+      {/* <EditArticleList /> */}
     </>
   );
 }

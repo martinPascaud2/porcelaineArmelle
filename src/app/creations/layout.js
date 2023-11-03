@@ -1,7 +1,6 @@
 import Header from "./header";
 
 export default function CreationsLayout(props) {
-  console.log("props là", props);
   return (
     <>
       <Header />

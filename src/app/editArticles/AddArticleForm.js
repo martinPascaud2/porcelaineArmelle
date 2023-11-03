@@ -1,10 +1,10 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 import { experimental_useFormState as useFormState } from "react-dom";
 
 import { createArticle } from "@/api/editArticles/actions";
-import { useState } from "react";
+import { types } from "@/assets/globals";
 
 const initialState = {
   message: null,
@@ -37,12 +37,10 @@ export function AddArticleForm() {
     setIndex((prevIndex) => prevIndex + 1);
   }, [index, deleteInput]);
 
-  const types = ["Verseuses", "Coulée verte", "Truc"];
-
   return (
     <form
       ref={refForm}
-      action={async (formData) => {
+      action={(formData) => {
         formAction(formData);
         refForm.current?.reset();
       }}
@@ -58,9 +56,10 @@ export function AddArticleForm() {
       ))}
 
       <input key={0} type="file" name="file" required />
-
       {fileInputs}
+
       <button onClick={() => addInput()}>Image supplémentaire</button>
+
       <textarea
         type="text"
         name="content"
@@ -69,7 +68,9 @@ export function AddArticleForm() {
         rows="3"
         cols="33"
       />
+
       <button type="submit">Ajouter</button>
+
       <p aria-live="polite" className="sr-only" role="status">
         {state?.message}
       </p>

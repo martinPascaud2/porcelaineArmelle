@@ -1,8 +1,9 @@
 "use client";
 
 import { experimental_useFormState as useFormState } from "react-dom";
-import { addImage } from "@/api/editArticles/actions";
 import { useRef } from "react";
+
+import { addImage } from "@/api/editArticles/actions";
 
 const initialState = {
   message: null,
@@ -17,7 +18,7 @@ export function AddImageForm({ articleId }) {
   return (
     <form
       ref={refForm}
-      action={async (formData) => {
+      action={(formData) => {
         formAction(formData);
         refForm.current?.reset();
       }}
