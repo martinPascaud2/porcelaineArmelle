@@ -9,6 +9,11 @@ module.exports = {
     serverActions: true,
   },
   images: {
-    domains: ["res.cloudinary.com", "tailwindui.com", "images.unsplash.com"],
+    domains: [
+      "res.cloudinary.com",
+      "tailwindui.com",
+      "images.unsplash.com",
+      "localhost",
+    ],
   },
 };

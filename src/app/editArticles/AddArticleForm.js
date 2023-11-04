@@ -49,9 +49,15 @@ export function AddArticleForm() {
       <input type="text" id="title" name="title" required />
 
       {types.map((type) => (
-        <div key={type}>
-          <label htmlFor={type}>{type}</label>
-          <input id={type} type="radio" name="type" value={type} required />
+        <div key={type.name}>
+          <label htmlFor={type.name}>{type.name}</label>
+          <input
+            id={type.name}
+            type="radio"
+            name="type"
+            value={type.name}
+            required
+          />
         </div>
       ))}
 

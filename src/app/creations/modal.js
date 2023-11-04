@@ -63,6 +63,7 @@ export default function Modal({ children, images }) {
 
   const carouselItems = images.map((image, i) => (
     <div key={i} className="inline-flex">
+      <div className="scroll" />
       <div className="relative flex flex-col">
         <Image
           alt="Mountains"
@@ -79,6 +80,7 @@ export default function Modal({ children, images }) {
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
         />
+
         <div className="absolute bottom-36 w-full ">
           <div className="flex flex-row justify-between sm:justify-center gap-8">
             <button
@@ -128,8 +130,8 @@ export default function Modal({ children, images }) {
   ));
 
   return (
-    <div className="flex">
-      <div className="grid grid-cols-1 justify-end w-full sm:w-full md:w-5/6 lg:w-1/4 xl:w-1/3 overflow-hidden mx-auto ">
+    <div className="flex ">
+      <div className="grid grid-cols-1 justify-end w-full sm:w-full md:w-5/6 lg:w-1/4 xl:w-1/3 overflow-hidden self-center mx-auto">
         {/* <div className="carousel  self-center"> */}
         <div
           className={`inner whitespace-nowrap duration-300`}

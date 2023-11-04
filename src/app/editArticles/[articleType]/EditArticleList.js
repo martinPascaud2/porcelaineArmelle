@@ -22,8 +22,9 @@ export async function EditArticleList({ articleType }) {
     });
     await prisma.$disconnect();
   } catch (error) {
+    console.error(error);
     await prisma.$disconnect();
-    process.exit(1);
+    // process.exit(1);
   }
 
   const deleteArticle = async (id) => {

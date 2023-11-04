@@ -19,16 +19,24 @@ export default function Disclosure({ props, MainLogo }) {
     {
       name: "Créations",
       href: "/creations",
-      current: pathname === "/creations",
+      current: pathname.startsWith("/creations"),
     },
-    { name: "A propos", href: "/apropos", current: pathname === "/apropos" },
-    { name: "Contact", href: "/contact", current: pathname === "/contact" },
+    {
+      name: "A propos",
+      href: "/apropos",
+      current: pathname.startsWith("/apropos"),
+    },
+    {
+      name: "Contact",
+      href: "/contact",
+      current: pathname.startsWith("/contact"),
+    },
   ];
   const adminNavigation = [
     {
       name: "EditArticles",
       href: "/editArticles",
-      current: pathname === "/editArticles",
+      current: pathname.startsWith("/editArticles"),
     },
   ];
 

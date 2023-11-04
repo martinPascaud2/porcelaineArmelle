@@ -10,8 +10,8 @@ export default function editArticlesLayout({ children }) {
       <AddArticleForm />
       <div>avant types</div>
       {types.map((type) => (
-        <div key={type}>
-          <Link href={`/editArticles/${type}`}>{type}</Link>
+        <div key={type.name}>
+          <Link href={`/editArticles/${type.name}`}>{type.name}</Link>
         </div>
       ))}
       <div>après types</div>
