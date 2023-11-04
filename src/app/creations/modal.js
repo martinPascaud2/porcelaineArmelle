@@ -10,6 +10,14 @@ import Link from "next/link";
 
 import { useRouter } from "next/navigation";
 
+// const cloudinary = require("cloudinary").v2;
+
+// cloudinary.config({
+//   cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+//   api_key: process.env.CLOUDINARY_API_KEY,
+//   api_secret: process.env.CLOUDINARY_API_SECRET,
+// });
+
 const useSwipe = (activeIndex, updateIndex) => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
@@ -43,7 +51,7 @@ const useSwipe = (activeIndex, updateIndex) => {
   return { onTouchStart, onTouchMove, onTouchEnd };
 };
 
-export default function Modal({ children, images }) {
+export default function Modal({ images, imagesUrls }) {
   const router = useRouter();
 
   const [activeIndex, setActiveIndex] = useState(0);
@@ -61,19 +69,31 @@ export default function Modal({ children, images }) {
     updateIndex
   );
 
-  const carouselItems = images.map((image, i) => (
+  // console.log("article modal", article);
+  // const imagesUrls = article.imageList.map((image) => {
+  //   const cloudUrl = cloudinary.url(image.url);
+  //   return cloudUrl;
+  // });
+  // console.log(imagesUrls);
+
+  const carouselItems = imagesUrls.map((image, i) => (
     <div key={i} className="inline-flex">
-      <div className="scroll" />
+      <div className="carousel" />
       <div className="relative flex flex-col">
         <Image
           alt="Mountains"
           src={image}
-          // sizes="100vw"
-          style={{
-            width: "100%",
-            height: "auto",
-            // maxHeight: "40vh",
-          }}
+          sizes="100vw"
+          // fill
+          width={1800}
+          height={1125}
+          style={
+            {
+              // width: "100%",
+              // height: "auto",
+              // maxHeight: "40vh",
+            }
+          }
           priority
           className="rounded-t-lg border-t border-l border-r border-terra-500"
           onTouchStart={onTouchStart}
@@ -86,7 +106,7 @@ export default function Modal({ children, images }) {
             <button
               onClick={() => updateIndex(activeIndex - 1)}
               className={`${
-                activeIndex === 0 ? "invisible sm:hidden" : "visible"
+                activeIndex === 0 ? "collapse" : "visible"
               } bg-terra-100 border border-1 border-slate-300 rounded-lg rounded-md px-3 py-0 text-lg font-medium text-slate-500 hover:border-slate-400 hover:text-slate-500 basis-24 sm:basis-32 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
             >
               {"<"}
@@ -94,9 +114,7 @@ export default function Modal({ children, images }) {
             <button
               onClick={() => updateIndex(activeIndex + 1)}
               className={`${
-                activeIndex === images.length - 1
-                  ? "invisible sm:hidden"
-                  : "visible"
+                activeIndex === imagesUrls.length - 1 ? "collapse" : "visible"
               } bg-terra-100 border border-1 border-slate-300 rounded-lg rounded-md px-3 py-0 text-lg font-medium text-slate-500 hover:border-slate-400 hover:text-slate-500 basis-24 sm:basis-32 flex justify-center shadow shadow-slate-500  transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
             >
               {">"}
@@ -131,7 +149,7 @@ export default function Modal({ children, images }) {
 
   return (
     <div className="flex ">
-      <div className="grid grid-cols-1 justify-end w-full sm:w-full md:w-5/6 lg:w-1/4 xl:w-1/3 overflow-hidden self-center mx-auto">
+      <div className="grid grid-cols-1 justify-end  w-full sm:w-full md:w-5/6 lg:w-1/4 xl:w-1/3 overflow-hidden self-center mx-auto">
         {/* <div className="carousel  self-center"> */}
         <div
           className={`inner whitespace-nowrap duration-300`}

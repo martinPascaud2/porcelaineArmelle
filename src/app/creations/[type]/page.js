@@ -118,7 +118,7 @@ const CardTEST = ({ article }) => {
 
         <div className="flex flex-inline ">
           <Link
-            href="/creations?modal=1#scroll"
+            href={`/creations?modal=${article.id}#carousel`}
             className={`${inter.className} bg-terra-100 border border-slate-300 rounded-lg rounded-md mx-4 my-2 px-3 py-2 text-sm font-medium text-slate-400 hover:border-slate-400 hover:text-slate-500 basis-20 flex justify-center shadow shadow-slate-400 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
           >
             Voir

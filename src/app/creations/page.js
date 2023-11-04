@@ -111,17 +111,41 @@ import limage4 from "/public/2.jpeg";
 
 import Modal from "./modal";
 
+const { PrismaClient } = require("@prisma/client");
+
+const prisma = new PrismaClient();
+
+const cloudinary = require("cloudinary").v2;
+cloudinary.config({
+  cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
 export default async function Page({ searchParams }) {
-  const modalId = searchParams?.modal;
+  const modalId = parseInt(searchParams?.modal);
+  console.log("modalId lààà", modalId);
+  if (!modalId) {
+    return <div>La page création /</div>;
+  }
+  console.log("modalId", modalId);
+  const article = await prisma.article.findFirst({
+    where: {
+      id: modalId,
+    },
+    include: {
+      imageList: true,
+    },
+  });
+
+  const imagesUrls = article.imageList.map((image) =>
+    cloudinary.url(image.url)
+  );
+
+  console.log("imagesUrls", imagesUrls);
+
   const carouselImages = [limage, limage2, limage4, limage2];
 
-  return (
-    <>
-      {modalId === undefined ? (
-        <div>La page création /</div>
-      ) : (
-        <Modal images={carouselImages} />
-      )}
-    </>
-  );
+  // return <Modal images={carouselImages} />;
+  return <Modal images={carouselImages} imagesUrls={imagesUrls} />;
 }
