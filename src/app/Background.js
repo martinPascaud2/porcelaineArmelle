@@ -8,13 +8,14 @@ export default function Background() {
       src={terracotta_background}
       placeholder="blur"
       quality={100}
-      fill
+      // fill
       sizes="100vw"
       style={{
         // objectFit: "fill",
         zIndex: -1,
         // width: "100%",
-        // height: "100%",
+        height: "100%",
+        position: "fixed",
       }}
       className="w-full h-auto"
     />

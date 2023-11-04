@@ -125,9 +125,11 @@ cloudinary.config({
 export default async function Page({ searchParams }) {
   const modalId = parseInt(searchParams?.modal);
   console.log("modalId lààà", modalId);
+
   if (!modalId) {
     return <div>La page création /</div>;
   }
+
   console.log("modalId", modalId);
   const article = await prisma.article.findFirst({
     where: {

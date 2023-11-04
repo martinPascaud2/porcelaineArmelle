@@ -18,9 +18,10 @@ import { useRouter } from "next/navigation";
 //   api_secret: process.env.CLOUDINARY_API_SECRET,
 // });
 
-const useSwipe = (activeIndex, updateIndex) => {
+const useSwipe = (activeIndex, updateIndex, maxIndex) => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
+  console.log("maxIndex", maxIndex);
 
   // the required distance between touchStart and touchEnd to be detected as a swipe
   const minSwipeDistance = 50;
@@ -39,7 +40,7 @@ const useSwipe = (activeIndex, updateIndex) => {
     const isRightSwipe = distance < -minSwipeDistance;
     // if (isLeftSwipe || isRightSwipe)
     //   console.log("swipe", isLeftSwipe ? "left" : "right");
-    if (isLeftSwipe) {
+    if (isLeftSwipe && activeIndex < maxIndex) {
       updateIndex(activeIndex + 1);
     }
     if (isRightSwipe) {
@@ -66,9 +67,9 @@ export default function Modal({ images, imagesUrls }) {
 
   const { onTouchStart, onTouchMove, onTouchEnd } = useSwipe(
     activeIndex,
-    updateIndex
+    updateIndex,
+    imagesUrls.length - 1
   );
-
   // console.log("article modal", article);
   // const imagesUrls = article.imageList.map((image) => {
   //   const cloudUrl = cloudinary.url(image.url);
@@ -127,17 +128,17 @@ export default function Modal({ images, imagesUrls }) {
           >
             Noteworthy technology acquisitions 2021
           </h5>
-          <div className="flex flex-row w-full place-content-between">
+          <div className="flex flex-row w-full place-content-between mb-3">
             <button
               onClick={router.back}
-              className="mx-3 bg-terra-100 border border-1 border-slate-300 rounded-lg rounded-md px-3 py-2 text-sm font-medium text-slate-400 hover:border-slate-400 hover:text-slate-500 basis-20 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
+              className="ml-6 bg-terra-100 border border-1 border-slate-300 rounded-lg rounded-md px-3 py-2 text-sm font-medium text-slate-400 hover:border-slate-400 hover:text-slate-500 basis-20 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
             >
               Retour
             </button>
 
             <Link
               href="#"
-              className="mx-3 bg-terra-100 border border-1 border-slate-300 rounded-lg rounded-md px-3 py-2 text-sm font-medium text-slate-400 hover:border-slate-400 hover:text-slate-500 basis-20 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
+              className="mr-6 bg-terra-100 border border-1 border-slate-300 rounded-lg rounded-md px-3 py-2 text-sm font-medium text-slate-400 hover:border-slate-400 hover:text-slate-500 basis-20 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
             >
               Contact
             </Link>
@@ -148,8 +149,8 @@ export default function Modal({ images, imagesUrls }) {
   ));
 
   return (
-    <div className="flex ">
-      <div className="grid grid-cols-1 justify-end  w-full sm:w-full md:w-5/6 lg:w-1/4 xl:w-1/3 overflow-hidden self-center mx-auto">
+    <div className="flex  ">
+      <div className="grid grid-cols-1 justify-end  w-full sm:w-full md:w-5/6 lg:w-1/4 xl:w-1/3 overflow-hidden self-center sm:self-end mx-auto">
         {/* <div className="carousel  self-center"> */}
         <div
           className={`inner whitespace-nowrap duration-300`}

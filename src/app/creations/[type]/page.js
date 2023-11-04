@@ -171,7 +171,7 @@ export default async function Page({ params, searchParams }) {
   return (
     <>
       <div className="mt-10 sm:mt-3 flex justify-center">
-        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center gap-x-12 gap-y-10">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center  gap-x-12 gap-y-10">
           {/* <Card image={limage2} className="" /> */}
           {/* <Card image={limage4} className="" /> */}
           {articles.map((article) => (

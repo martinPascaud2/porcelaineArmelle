@@ -25,10 +25,9 @@ export default function CreationsLayout(props) {
 
   return (
     <div className="flex flex-col items-center">
-      <Header />
-      <main className="flex flex-col justify-end">
-        <div>{props.children}</div>
-      </main>
+      <Header className />
+      {/* <main className="flex flex-col justify-end"> */}
+      <main className="flex flex-row">{props.children}</main>
       {/* <Pagination /> */}
     </div>
   );
