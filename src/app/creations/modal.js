@@ -51,15 +51,16 @@ const useSwipe = (activeIndex, updateIndex, maxIndex) => {
   return { onTouchStart, onTouchMove, onTouchEnd };
 };
 
-export default function Modal({ images, imagesUrls }) {
+export default function Modal({ imagesUrls }) {
   const router = useRouter();
+  console.log("imagesUrls", imagesUrls);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const updateIndex = (newIndex) => {
     if (newIndex < 0) {
       newIndex = 0;
-    } else if (newIndex >= images.length - 1) {
-      newIndex = images.length - 1;
+    } else if (newIndex >= imagesUrls.length - 1) {
+      newIndex = imagesUrls.length - 1;
     }
     setActiveIndex(newIndex);
   };

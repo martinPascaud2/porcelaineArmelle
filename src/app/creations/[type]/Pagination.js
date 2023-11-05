@@ -11,16 +11,11 @@ import { useSearchParams, useParams } from "next/navigation";
 import { inter } from "@/assets/fonts";
 
 export default function Pagination({ pageMax }) {
-  console.log("pageMax pagination", pageMax);
   const params = useParams();
-  console.log("params", params);
   const { type } = params;
-  console.log("type", type);
 
   const searchParams = useSearchParams();
-  console.log("searchParams", searchParams);
   const page = parseInt(searchParams.get("page"));
-  console.log("page depuis searchparams", page);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });

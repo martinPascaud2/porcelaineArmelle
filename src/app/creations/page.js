@@ -146,8 +146,6 @@ export default async function Page({ searchParams }) {
 
   console.log("imagesUrls", imagesUrls);
 
-  const carouselImages = [limage, limage2, limage4, limage2];
-
   // return <Modal images={carouselImages} />;
-  return <Modal images={carouselImages} imagesUrls={imagesUrls} />;
+  return <Modal imagesUrls={imagesUrls} />;
 }
