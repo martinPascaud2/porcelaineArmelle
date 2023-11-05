@@ -23,7 +23,7 @@ export const roboto = Roboto({
   display: "swap",
 });
 export const ibm = IBM_Plex_Serif({
-  weight: "300",
+  weight: "400",
   style: "italic",
   subsets: ["latin"],
   display: "swap",

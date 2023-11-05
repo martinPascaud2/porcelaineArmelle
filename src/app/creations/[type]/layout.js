@@ -9,7 +9,7 @@ export default async function TypeArticleLayout({ params, children }) {
   console.log("pagemax", pageMax);
   return (
     <div className="flex flex-col items-center">
-      <div>{children}</div>
+      <div className="flex flex-col items-center">{children}</div>
       <Pagination pageMax={pageMax} />
     </div>
   );

@@ -23,7 +23,6 @@ const useSwipe = (activeIndex, updateIndex, maxIndex) => {
   const [touchEnd, setTouchEnd] = useState(null);
   console.log("maxIndex", maxIndex);
 
-  // the required distance between touchStart and touchEnd to be detected as a swipe
   const minSwipeDistance = 50;
 
   const onTouchStart = (e) => {
@@ -80,14 +79,14 @@ export default function Modal({ images, imagesUrls }) {
   const carouselItems = imagesUrls.map((image, i) => (
     <div key={i} className="inline-flex">
       <div className="carousel" />
-      <div className="relative flex flex-col">
+      <div className=" flex flex-col">
         <Image
           alt="Mountains"
           src={image}
           sizes="100vw"
           // fill
-          width={1800}
-          height={1125}
+          width={960}
+          height={600}
           style={
             {
               // width: "100%",
@@ -107,7 +106,7 @@ export default function Modal({ images, imagesUrls }) {
               onClick={() => updateIndex(activeIndex - 1)}
               className={`${
                 activeIndex === 0 ? "collapse" : "visible"
-              } bg-terra-100 border border-1 border-slate-300 rounded-lg rounded-md px-3 py-0 text-lg font-medium text-slate-500 hover:border-slate-400 hover:text-slate-500 basis-24 sm:basis-32 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
+              } bg-terra-100 border border-1 border-slate-400 rounded-lg rounded-md px-3 py-0 text-lg font-medium text-slate-500 hover:border-slate-400 hover:text-slate-500 basis-24 sm:basis-32 flex justify-center shadow shadow-slate-400 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
             >
               {"<"}
             </button>
@@ -115,29 +114,29 @@ export default function Modal({ images, imagesUrls }) {
               onClick={() => updateIndex(activeIndex + 1)}
               className={`${
                 activeIndex === imagesUrls.length - 1 ? "collapse" : "visible"
-              } bg-terra-100 border border-1 border-slate-300 rounded-lg rounded-md px-3 py-0 text-lg font-medium text-slate-500 hover:border-slate-400 hover:text-slate-500 basis-24 sm:basis-32 flex justify-center shadow shadow-slate-500  transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
+              } bg-terra-100 border border-1 border-slate-400 rounded-lg rounded-md px-3 py-0 text-lg font-medium text-slate-500 hover:border-slate-400 hover:text-slate-500 basis-24 sm:basis-32 flex justify-center shadow shadow-slate-400  transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
             >
               {">"}
             </button>
           </div>
         </div>
-        <div className="flex flex-col  p-5 rounded-b-lg border border-t-slate-400 border-b-terra-500 border-l-terra-500 border-r-terra-500 bg-slate-100">
+        <div className="flex flex-col py-5 rounded-b-lg border border-t-slate-400 border-b-terra-500 border-l-terra-500 border-r-terra-500 bg-slate-100">
           <h5
-            className={`${amatic.className} text-3xl font-normal text-terra-500 tracking-tight mt-3 mb-6`}
+            className={`${amatic.className} text-3xl font-bold text-terra-500 self-center mb-6`}
           >
             Noteworthy technology acquisitions 2021
           </h5>
           <div className="flex flex-row w-full place-content-between mb-3">
             <button
               onClick={router.back}
-              className="ml-6 bg-terra-100 border border-1 border-slate-300 rounded-lg rounded-md px-3 py-2 text-sm font-medium text-slate-400 hover:border-slate-400 hover:text-slate-500 basis-20 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
+              className="ml-6 bg-terra-100 border border-1 border-slate-400 rounded-lg rounded-md px-3 py-2 text-sm font-medium text-slate-400 hover:border-slate-400 hover:text-slate-500 basis-20 flex justify-center shadow shadow-slate-400 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
             >
               Retour
             </button>
 
             <Link
               href="#"
-              className="mr-6 bg-terra-100 border border-1 border-slate-300 rounded-lg rounded-md px-3 py-2 text-sm font-medium text-slate-400 hover:border-slate-400 hover:text-slate-500 basis-20 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
+              className="mr-6 bg-terra-100 border border-1 border-slate-400 rounded-lg rounded-md px-3 py-2 text-sm font-medium text-slate-400 hover:border-slate-400 hover:text-slate-500 basis-20 flex justify-center shadow shadow-slate-400 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
             >
               Contact
             </Link>
@@ -148,7 +147,7 @@ export default function Modal({ images, imagesUrls }) {
   ));
 
   return (
-    <div className="flex  ">
+    <div className="flex ">
       <div className="grid grid-cols-1 justify-end  w-full sm:w-full md:w-5/6 lg:w-1/4 xl:w-1/3 overflow-hidden self-center sm:self-end mx-auto">
         {/* <div className="carousel  self-center"> */}
         <div

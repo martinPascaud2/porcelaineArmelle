@@ -47,8 +47,8 @@ export default function Header() {
         className={classNames(
           isActive
             ? `w-64 h-36  border-2 border-terra-500`
-            : "w-60 h-32  border hover:border-2 border-slate-300 hover:border-slate-400 hover:scale-x-[1.07] hover:scale-y-[1.12] transition	ease-in-out delay-0 duration-600",
-          "shrink-0 relative mt-4 sm:mt-0 rounded-lg font-medium flex justify-center"
+            : "w-60 h-32  border-2 hover:border-2 border-slate-300 hover:border-slate-300 hover:scale-x-[1.07] hover:scale-y-[1.12] transition	ease-in-out delay-0 duration-600",
+          "shrink-0 relative mt-4 mb-1 sm:mt-0 rounded-lg font-medium flex justify-center"
         )}
       >
         <Link href={href} className="flex">
@@ -64,7 +64,7 @@ export default function Header() {
             height={500}
             sizes="100vw"
             alt="Verseuses"
-            className="rounded"
+            className="rounded-md"
             style={{
               objectFit: "cover",
               // width: "100%",
@@ -74,8 +74,8 @@ export default function Header() {
         <Link
           href={href}
           className={classNames(
-            isActive ? `text-6xl` : `text-5xl`,
-            `absolute top-1/2 ${amatic.className} text-slate-300`
+            isActive ? `text-6xl text-slate-300` : `text-5xl text-slate-300`,
+            `absolute top-1/2 ${amatic.className} text-bold  `
           )}
         >
           {type.name}
@@ -89,9 +89,9 @@ export default function Header() {
       id="header"
       className={`${
         scrolled
-          ? "sm:transform-none transition-transform duration-500 ease-in-out delay-0  -translate-y-full scale-y-0"
+          ? "sm:transform-none transition-transform duration-500 ease-in-out delay-0 -translate-y-full scale-y-0"
           : "flex"
-      }  sm:flex sticky top-0 sm:top-16 bg-slate-100 h-44 sm:h-40 border border-terra-500  sm:justify-center gap-x-12 items-center overflow-x-auto self-stretch`}
+      } sm:flex sticky top-0 sm:top-16 bg-slate-100 h-44 sm:h-40 border-b-2 border-terra-500  sm:justify-center gap-x-12 items-center overflow-x-auto self-stretch`}
     >
       {types.map((type) => (
         <TypeLink key={type.name} type={type} />
