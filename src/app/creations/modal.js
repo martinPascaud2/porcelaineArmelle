@@ -95,7 +95,6 @@ export default function Modal({ images, imagesUrls }) {
               // maxHeight: "40vh",
             }
           }
-          priority
           className="rounded-t-lg border-t border-l border-r border-terra-500"
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
