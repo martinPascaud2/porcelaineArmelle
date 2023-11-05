@@ -65,11 +65,12 @@ const prisma = new PrismaClient();
 
 export default async function Page({ params, searchParams }) {
   const { modal: modalId, page } = searchParams;
+  const paramType = decodeURIComponent(params.type);
+
   if (modalId !== undefined) {
     return <Modal images={carouselImages} />;
   }
 
-  const paramType = decodeURIComponent(params.type);
   let articles;
   try {
     articles = await prisma.article.findMany({
@@ -85,18 +86,25 @@ export default async function Page({ params, searchParams }) {
     await prisma.$disconnect();
   }
 
+  let description;
+  try {
+    description = await prisma.description.findFirst({
+      where: {
+        type: paramType,
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    await prisma.$disconnect();
+  }
+
   return (
     <>
       {page === "1" && (
         <div
           className={`${ibm.className} m-12 sm:m-20 text-center text-3xl text-bold text-terra-500  w-11/12 sm:w-2/3`}
         >
-          Les verseuses Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Sed non risus. Suspendisse lectus tortor, dignissim sit amet,
-          adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam.
-          Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin
-          porttitor, orci nec nonummy molestie, enim est eleifend mi, non
-          fermentum diam nisl sit amet erat. Duis semper. les verseuses
+          {description?.description}
         </div>
       )}
       <div className=" flex justify-center">

@@ -85,8 +85,8 @@ export default function Modal({ images, imagesUrls }) {
           src={image}
           sizes="100vw"
           // fill
-          width={960}
-          height={600}
+          width={1800}
+          height={1125}
           style={
             {
               // width: "100%",

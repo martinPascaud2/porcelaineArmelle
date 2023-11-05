@@ -56,7 +56,6 @@ export async function createArticle(prevState, formData) {
   return { message: "Article ajouté" };
 }
 
-// export async function addImage({ prevState, formData }) {
 export async function addImage(articleId, prevState, formData) {
   const file = formData.get("file");
 
@@ -76,6 +75,57 @@ export async function addImage(articleId, prevState, formData) {
 
   revalidatePath("/creations");
   revalidatePath("/editArticles");
-
   return { message: "Image ajoutée" };
+}
+
+export async function editTypeDescription(articleType, prevState, formData) {
+  console.log("articleType action", articleType, typeof articleType);
+  const newDescription = formData.get("description");
+  console.log("newDescription ici", newDescription);
+
+  await prisma.description.upsert({
+    where: {
+      type: articleType,
+    },
+    update: { description: newDescription },
+    create: { type: articleType, description: newDescription },
+  });
+
+  revalidatePath("/creations");
+  revalidatePath("/editArticles");
+  return { message: "Description mise à jour" };
+}
+
+export async function editArticleName(articleId, prevState, formData) {
+  const newName = formData.get("newName");
+
+  await prisma.article.update({
+    where: {
+      id: articleId,
+    },
+    data: {
+      titre: newName,
+    },
+  });
+
+  revalidatePath("/creations");
+  revalidatePath("/editArticles");
+  return { message: "Nom mis à jour" };
+}
+
+export async function editArticleContent(articleId, prevState, formData) {
+  const newContent = formData.get("newContent");
+
+  await prisma.article.update({
+    where: {
+      id: articleId,
+    },
+    data: {
+      contenu: newContent,
+    },
+  });
+
+  revalidatePath("/creations");
+  revalidatePath("/editArticles");
+  return { message: "Description mise à jour" };
 }

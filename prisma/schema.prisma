@@ -23,3 +23,8 @@ model Image {
   article   Article? @relation(fields: [articleId], references: [id])
   articleId Int?
 }
+
+model Description {
+  type        String @id @db.VarChar(20)
+  description String @db.VarChar(1500)
+}

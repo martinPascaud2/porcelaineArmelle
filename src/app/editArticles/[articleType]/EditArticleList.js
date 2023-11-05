@@ -6,62 +6,88 @@ import { DeleteArticle } from "../DeleteArticle";
 import { DeleteImage } from "../DeleteImage";
 import { DeleteMain } from "../DeleteMain";
 import { AddImageForm } from "../AddImageForm";
+import EditDescriptionForm from "./EditDescriptionForm";
+import EditNameForm from "./EditNameForm";
+import EditContentForm from "./EditContentForm";
 
-const prisma = new PrismaClient();
-
-export async function EditArticleList({ articleType }) {
+export async function EditArticleList({ articleType: type }) {
+  const articleType = decodeURIComponent(type);
   let articles;
+  let description;
   try {
+    const prisma = new PrismaClient();
     articles = await prisma.article.findMany({
       where: {
-        type: decodeURIComponent(articleType),
+        type: articleType,
       },
       include: {
         imageList: true,
       },
     });
+    description = await prisma.description.findFirst({
+      where: {
+        type: articleType,
+      },
+      select: {
+        description: true,
+      },
+    });
+
     await prisma.$disconnect();
   } catch (error) {
     console.error(error);
+    throw new Error("Articles finding aborted:");
     await prisma.$disconnect();
     // process.exit(1);
   }
 
+  // const editTypeDescription = async () => {
+  //   "use server";
+
+  // }
+
   const deleteArticle = async (id) => {
     "use server";
     try {
+      const prisma = new PrismaClient();
       await prisma.article.delete({
         where: {
           id: id,
         },
       });
 
+      await prisma.$disconnect();
       revalidatePath("/editArticles");
     } catch (error) {
       console.error(error);
       throw new Error("Article deletion aborted:");
+      await prisma.$disconnect();
     }
   };
 
   const deleteImage = async (id) => {
     "use server";
     try {
+      const prisma = new PrismaClient();
       await prisma.image.delete({
         where: {
           id: id,
         },
       });
 
+      await prisma.$disconnect();
       revalidatePath("/editArticles");
     } catch (error) {
       console.error(error);
       throw new Error("Image deletion aborted:");
+      await prisma.$disconnect();
     }
   };
 
   const deleteMain = async (article) => {
     "use server";
     try {
+      const prisma = new PrismaClient();
       const articleId = article.id;
       const oldMainImageId = article.imageList[0].id;
       const newMainUrl = article.imageList[1].url;
@@ -81,22 +107,29 @@ export async function EditArticleList({ articleType }) {
         },
       });
 
+      await prisma.$disconnect();
       revalidatePath("/editArticles");
     } catch (error) {
       console.error(error);
       throw new Error("Main image deletion aborted:");
+      await prisma.$disconnect();
     }
   };
 
   return (
     <h1>
       <div>articleType : {articleType}</div>
+      <EditDescriptionForm
+        articleType={articleType}
+        description={description?.description}
+      />
+
+      <p>-----------------</p>
       {articles.map((article) => {
         return (
           <div key={article.id}>
-            <div>{article.titre}</div>
-            <div>{article.type}</div>
-            <div>{article.contenu}</div>
+            <EditNameForm articleId={article.id} name={article.titre} />
+            <EditContentForm articleId={article.id} content={article.contenu} />
             <CldImage
               width={960}
               height={600}
