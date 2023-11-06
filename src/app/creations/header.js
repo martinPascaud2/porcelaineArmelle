@@ -5,18 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 
-import CldImage from "@/components/CloudImage";
-
-import { inter, amatic } from "@/assets/fonts";
-import verseuses from "/public/verseuses.jpeg";
-import couleeverte from "/public/coulée verte.jpeg";
-import truc from "/public/truc.jpeg";
+import { amatic } from "@/assets/fonts";
 
 import { types } from "@/assets/globals";
-
-// const ComponentA = dynamic(() => import('../components/A'))
-// const srcTEST = dynamic(() => import("/public/verseuses.jpeg"));
-// console.log("srcTEST", srcTEST);
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -34,9 +25,6 @@ export default function Header() {
     getScroll();
   }, []);
 
-  // const srcTEST = import(`http://localhost:3000/public/verseuses.jpeg`);
-  // console.log("srcTEST", srcTEST);
-
   const TypeLink = ({ type }) => {
     const href = `/creations/${type.name}?page=1`;
     const pathname = usePathname();
@@ -53,13 +41,9 @@ export default function Header() {
       >
         <Link href={href} className="flex">
           <Image
-            // dynamic(() => import('../components/A'))
             src={type.imagePath}
-            // src={verseuses}
-            //   priority
             priority
             quality={100}
-            //   fill
             width={500}
             height={500}
             sizes="100vw"
@@ -67,7 +51,6 @@ export default function Header() {
             className="rounded-md"
             style={{
               objectFit: "cover",
-              // width: "100%",
             }}
           />
         </Link>
@@ -96,94 +79,6 @@ export default function Header() {
       {types.map((type) => (
         <TypeLink key={type.name} type={type} />
       ))}
-      {/* <TypeLink type={typesTEST[0]} /> */}
-      {/* <div className="shrink-0 w-64 h-36 relative mt-4 sm:mt-0 border-2 border-terra-500 rounded-lg text-sm font-medium text-slate-400 flex justify-center">
-        <Link
-          href="/"
-          className={`${inter.className}  bg-terra-100  rounded-lg text-sm font-medium text-slate-400 hover:border-slate-400 hover:text-slate-500  flex   transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
-        >
-          <Image
-            // dynamic(() => import('../components/A'))
-            src={typesTEST[0].imagePath}
-            // src={verseuses}
-            //   priority
-            priority
-            quality={100}
-            //   fill
-            width={500}
-            height={500}
-            sizes="100vw"
-            alt="Verseuses"
-            className="rounded"
-            style={{
-              objectFit: "cover",
-              // width: "100%",
-            }}
-          />
-        </Link>
-        <Link
-          href="/"
-          className={`absolute top-1/2 text-5xl text-slate-300 ${amatic.className}`}
-        >
-          {typesTEST[0].name}
-        </Link>
-      </div>
-      <div className="shrink-0 w-60 h-32 relative mt-4 sm:mt-0 border hover:border-2 border-slate-300 hover:border-slate-400 hover:scale-[1.12] transition	ease-in-out delay-0 duration-300 rounded-lg font-medium   flex justify-center  ">
-        <Link
-          href="/"
-          className={`${inter.className}  bg-terra-100  rounded-lg text-sm font-medium   flex   transition	ease-in-out delay-0 duration-300`}
-        >
-          <Image
-            src={couleeverte}
-            priority
-            quality={100}
-            //   fill
-            //   priority
-            width={500}
-            height={500}
-            sizes="100vw"
-            alt="Verseuses"
-            className="rounded"
-            style={{
-              objectFit: "cover",
-              //   width: "100%",
-            }}
-          />
-        </Link>
-        <Link
-          href="/"
-          className={`absolute top-1/2 text-5xl text-slate-300  ${amatic.className}`}
-        >
-          Coulée verte
-        </Link>
-      </div>
-      <div className="shrink-0 w-60 h-32 relative mt-4 sm:mt-0 border hover:border-2 border-slate-300 hover:border-slate-400 hover:scale-[1.12] transition	ease-in-out delay-0 duration-300 rounded-lg font-medium   flex justify-center  ">
-        <Link
-          href="/"
-          className={`${inter.className}  bg-terra-100  rounded-lg text-sm font-medium   flex   transition	ease-in-out delay-0 duration-300`}
-        >
-          <Image
-            src={truc}
-            priority
-            quality={100}
-            width={500}
-            height={500}
-            sizes="100vw"
-            alt="Verseuses"
-            className="rounded"
-            style={{
-              objectFit: "cover",
-              //   width: "100%",
-            }}
-          />
-        </Link>
-        <Link
-          href="/"
-          className={`absolute top-1/2 text-5xl text-slate-300  ${amatic.className}`}
-        >
-          Truc
-        </Link>
-      </div> */}
     </header>
   );
 }

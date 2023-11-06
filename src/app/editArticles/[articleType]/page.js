@@ -6,7 +6,7 @@ export default async function Page({ params }) {
   return (
     <>
       <div>début page</div>
-      <div>Nom de ce type d'article : {articleType}</div>
+      <div>Nom de ce type d&apos;article : {articleType}</div>
       <p>-------------</p>
       <EditArticleList articleType={articleType} />
       <div>fin page</div>

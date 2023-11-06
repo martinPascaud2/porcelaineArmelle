@@ -1,5 +1,3 @@
-// export const types = ["Verseuses", "Coulée verte", "Truc"];
-
 export const types = [
   {
     name: "Verseuses",

@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import limage from "/public/imageTEST.jpeg";
+import { useState } from "react";
 import { amatic } from "@/assets/fonts";
 
 import React from "react";
@@ -10,23 +9,14 @@ import Link from "next/link";
 
 import { useRouter } from "next/navigation";
 
-// const cloudinary = require("cloudinary").v2;
-
-// cloudinary.config({
-//   cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-//   api_key: process.env.CLOUDINARY_API_KEY,
-//   api_secret: process.env.CLOUDINARY_API_SECRET,
-// });
-
 const useSwipe = (activeIndex, updateIndex, maxIndex) => {
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
-  console.log("maxIndex", maxIndex);
 
   const minSwipeDistance = 50;
 
   const onTouchStart = (e) => {
-    setTouchEnd(null); // otherwise the swipe is fired even with usual touch events
+    setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
   };
 
@@ -37,23 +27,19 @@ const useSwipe = (activeIndex, updateIndex, maxIndex) => {
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
-    // if (isLeftSwipe || isRightSwipe)
-    //   console.log("swipe", isLeftSwipe ? "left" : "right");
+
     if (isLeftSwipe && activeIndex < maxIndex) {
       updateIndex(activeIndex + 1);
     }
     if (isRightSwipe) {
       updateIndex(activeIndex - 1);
     }
-
-    // add your conditional logic here
   };
   return { onTouchStart, onTouchMove, onTouchEnd };
 };
 
 export default function Modal({ imagesUrls }) {
   const router = useRouter();
-  console.log("imagesUrls", imagesUrls);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const updateIndex = (newIndex) => {
@@ -70,12 +56,6 @@ export default function Modal({ imagesUrls }) {
     updateIndex,
     imagesUrls.length - 1
   );
-  // console.log("article modal", article);
-  // const imagesUrls = article.imageList.map((image) => {
-  //   const cloudUrl = cloudinary.url(image.url);
-  //   return cloudUrl;
-  // });
-  // console.log(imagesUrls);
 
   const carouselItems = imagesUrls.map((image, i) => (
     <div key={i} className="inline-flex">
@@ -85,16 +65,8 @@ export default function Modal({ imagesUrls }) {
           alt="Mountains"
           src={image}
           sizes="100vw"
-          // fill
           width={1800}
           height={1125}
-          style={
-            {
-              // width: "100%",
-              // height: "auto",
-              // maxHeight: "40vh",
-            }
-          }
           className="rounded-t-lg border-t border-l border-r border-terra-500"
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
@@ -150,7 +122,6 @@ export default function Modal({ imagesUrls }) {
   return (
     <div className="flex ">
       <div className="grid grid-cols-1 justify-end  w-full sm:w-full md:w-5/6 lg:w-1/4 xl:w-1/3 overflow-hidden self-center sm:self-end mx-auto">
-        {/* <div className="carousel  self-center"> */}
         <div
           className={`inner whitespace-nowrap duration-300`}
           style={{

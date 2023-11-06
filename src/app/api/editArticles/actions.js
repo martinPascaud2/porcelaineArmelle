@@ -79,9 +79,7 @@ export async function addImage(articleId, prevState, formData) {
 }
 
 export async function editTypeDescription(articleType, prevState, formData) {
-  console.log("articleType action", articleType, typeof articleType);
   const newDescription = formData.get("description");
-  console.log("newDescription ici", newDescription);
 
   await prisma.description.upsert({
     where: {

@@ -12,8 +12,6 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-import Modal from "../modal";
-
 const Card = ({ article }) => {
   const imageUrl = cloudinary.url(article.mainImage);
 
@@ -64,12 +62,8 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 export default async function Page({ params, searchParams }) {
-  const { modal: modalId, page } = searchParams;
+  const { page } = searchParams;
   const paramType = decodeURIComponent(params.type);
-
-  if (modalId !== undefined) {
-    return <Modal images={carouselImages} />;
-  }
 
   let articles;
   try {

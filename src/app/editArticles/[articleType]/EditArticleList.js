@@ -38,13 +38,7 @@ export async function EditArticleList({ articleType: type }) {
     console.error(error);
     throw new Error("Articles finding aborted:");
     await prisma.$disconnect();
-    // process.exit(1);
   }
-
-  // const editTypeDescription = async () => {
-  //   "use server";
-
-  // }
 
   const deleteArticle = async (id) => {
     "use server";

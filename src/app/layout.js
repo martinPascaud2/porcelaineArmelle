@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
         <Background />
         <Navbar className="" />
         {children}
-        <div>coucou</div>
+        <div>Footer</div>
       </body>
     </html>
   );
