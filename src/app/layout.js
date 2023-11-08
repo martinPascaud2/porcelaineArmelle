@@ -1,9 +1,8 @@
-import "./globals.css";
 import { Navbar } from "./components/Navbar/Navbar";
-
-import { inter } from "./assets/fonts";
-
 import Background from "@/Background";
+
+import "./globals.css";
+import { inter } from "./assets/fonts";
 
 export const metadata = {
   title: "Atelier Pascaud",

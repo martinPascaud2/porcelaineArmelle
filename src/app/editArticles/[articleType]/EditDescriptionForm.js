@@ -20,19 +20,26 @@ export default function EditDescriptionForm({ articleType, description }) {
 
   return (
     <form action={formAction}>
-      <label htmlFor="description">Description de ce type d'article</label>
+      <label htmlFor="description">
+        Présentation générale de {articleType}
+      </label>
       <textarea
         placeholder={`Description des ${articleType}`}
         id="description"
-        type="textarea"
+        type="text"
         name="description"
         value={newDescription}
         onChange={(e) => setNewDescription(e.currentTarget.value)}
+        rows="10"
+        cols="100"
         style={{ resize: "both" }}
-        rows="3"
-        cols="33"
       />
-      <button type="submit">Modifier la description</button>
+      <button
+        type="submit"
+        className="border border-terra-800 bg-slate-100 text-terra-800"
+      >
+        Modifier la présentation générale
+      </button>
     </form>
   );
 }

@@ -11,8 +11,8 @@ const initialState = {
 
 export function AddImageForm({ articleId }) {
   const addImageWithArticleId = addImage.bind(null, articleId);
-
   const [state, formAction] = useFormState(addImageWithArticleId, initialState);
+
   const refForm = useRef();
 
   return (
@@ -23,9 +23,16 @@ export function AddImageForm({ articleId }) {
         refForm.current?.reset();
       }}
     >
-      <label htmlFor="file">Ajouter une image</label>
+      <label htmlFor="file">
+        Ajouter une image au carousel de l&apos;article
+      </label>
       <input id="file" type="file" name="file" required />
-      <button type="submit">Ajouter</button>
+      <button
+        type="submit"
+        className="border border-terra-800 bg-slate-100 text-terra-800"
+      >
+        Ajouter l&apos;image
+      </button>
     </form>
   );
 }

@@ -1,9 +1,11 @@
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
-import Disclosure from "./Disclosure";
-import { jwtVerify } from "../../utils/jwtVerify";
-import { amatic } from "../../assets/fonts";
 import Link from "next/link";
+
+import Disclosure from "./Disclosure";
+
+import { jwtVerify } from "@/utils/jwtVerify";
+import { amatic } from "@/assets/fonts";
 
 export async function Navbar() {
   const cookiesStore = cookies();

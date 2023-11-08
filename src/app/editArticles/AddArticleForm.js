@@ -1,9 +1,10 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
 import { experimental_useFormState as useFormState } from "react-dom";
+import { useCallback, useRef, useState } from "react";
 
 import { createArticle } from "@/api/editArticles/actions";
+
 import { types } from "@/assets/globals";
 
 const initialState = {
@@ -12,8 +13,8 @@ const initialState = {
 
 export function AddArticleForm() {
   const [state, formAction] = useFormState(createArticle, initialState);
-  const refForm = useRef();
 
+  const refForm = useRef();
   const [fileInputs, setFileInputs] = useState([]);
   const [index, setIndex] = useState(1);
 
@@ -45,8 +46,14 @@ export function AddArticleForm() {
         refForm.current?.reset();
       }}
     >
-      <label htmlFor="title">Titre</label>
-      <input type="text" id="title" name="title" required />
+      <label htmlFor="title">Nom</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        required
+        style={{ width: "30vw" }}
+      />
 
       {types.map((type) => (
         <div key={type.name}>
@@ -75,7 +82,12 @@ export function AddArticleForm() {
         cols="33"
       />
 
-      <button type="submit">Ajouter</button>
+      <button
+        type="submit"
+        className="border border-terra-800 bg-slate-100 text-terra-800"
+      >
+        Ajouter un article
+      </button>
 
       <p aria-live="polite" className="sr-only" role="status">
         {state?.message}

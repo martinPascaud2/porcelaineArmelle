@@ -1,15 +1,19 @@
-import { EditArticleList } from "./EditArticleList";
+import { ArticleList } from "./ArticleList";
 
 export default async function Page({ params }) {
   const { articleType: type } = params;
   const articleType = decodeURIComponent(type);
+
   return (
     <>
-      <div>début page</div>
-      <div>Nom de ce type d&apos;article : {articleType}</div>
-      <p>-------------</p>
-      <EditArticleList articleType={articleType} />
-      <div>fin page</div>
+      <div className="bg-slate-100 font-bold	">
+        <hr />
+        <hr />
+        Type d&apos;article sélectionné : {articleType}
+        <hr />
+        <hr />
+      </div>
+      <ArticleList articleType={articleType} />
     </>
   );
 }

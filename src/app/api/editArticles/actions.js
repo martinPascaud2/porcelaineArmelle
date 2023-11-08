@@ -2,11 +2,10 @@
 
 import { revalidatePath } from "next/cache";
 
-import { uploadImage } from "@/utils/cloudinary";
 const DatauriParser = require("datauri/parser");
-
 const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
+
+import { uploadImage } from "@/utils/cloudinary";
 
 export async function createArticle(prevState, formData) {
   const type = formData.get("type");
@@ -31,6 +30,8 @@ export async function createArticle(prevState, formData) {
   );
 
   try {
+    const prisma = new PrismaClient();
+
     const imageList = datas.map((data) => ({
       url: data.public_id,
     }));
@@ -46,13 +47,15 @@ export async function createArticle(prevState, formData) {
         datePublication: new Date(),
       },
     });
+
+    await prisma.$disconnect();
   } catch (error) {
-    console.error("Post error :", error);
+    await prisma.$disconnect();
+    throw new Error("Article creation failed:" + error);
   }
 
   revalidatePath("/creations");
   revalidatePath("/editArticles");
-
   return { message: "Article ajouté" };
 }
 
@@ -66,12 +69,21 @@ export async function addImage(articleId, prevState, formData) {
   const imageData = await uploadImage(imgUri.content);
   const { public_id } = imageData;
 
-  await prisma.image.create({
-    data: {
-      url: public_id,
-      articleId: articleId,
-    },
-  });
+  try {
+    const prisma = new PrismaClient();
+
+    await prisma.image.create({
+      data: {
+        url: public_id,
+        articleId: articleId,
+      },
+    });
+
+    await prisma.$disconnect();
+  } catch (error) {
+    await prisma.$disconnect();
+    throw new Error("Image adding failed :" + error);
+  }
 
   revalidatePath("/creations");
   revalidatePath("/editArticles");
@@ -81,13 +93,22 @@ export async function addImage(articleId, prevState, formData) {
 export async function editTypeDescription(articleType, prevState, formData) {
   const newDescription = formData.get("description");
 
-  await prisma.description.upsert({
-    where: {
-      type: articleType,
-    },
-    update: { description: newDescription },
-    create: { type: articleType, description: newDescription },
-  });
+  try {
+    const prisma = new PrismaClient();
+
+    await prisma.description.upsert({
+      where: {
+        type: articleType,
+      },
+      update: { description: newDescription },
+      create: { type: articleType, description: newDescription },
+    });
+
+    await prisma.$disconnect();
+  } catch (error) {
+    await prisma.$disconnect();
+    throw new Error("Global description updating failed" + error);
+  }
 
   revalidatePath("/creations");
   revalidatePath("/editArticles");
@@ -97,14 +118,23 @@ export async function editTypeDescription(articleType, prevState, formData) {
 export async function editArticleName(articleId, prevState, formData) {
   const newName = formData.get("newName");
 
-  await prisma.article.update({
-    where: {
-      id: articleId,
-    },
-    data: {
-      titre: newName,
-    },
-  });
+  try {
+    const prisma = new PrismaClient();
+
+    await prisma.article.update({
+      where: {
+        id: articleId,
+      },
+      data: {
+        titre: newName,
+      },
+    });
+
+    await prisma.$disconnect();
+  } catch (error) {
+    await prisma.$disconnect();
+    throw new Error("Name editing failed" + error);
+  }
 
   revalidatePath("/creations");
   revalidatePath("/editArticles");
@@ -114,14 +144,23 @@ export async function editArticleName(articleId, prevState, formData) {
 export async function editArticleContent(articleId, prevState, formData) {
   const newContent = formData.get("newContent");
 
-  await prisma.article.update({
-    where: {
-      id: articleId,
-    },
-    data: {
-      contenu: newContent,
-    },
-  });
+  try {
+    const prisma = new PrismaClient();
+
+    await prisma.article.update({
+      where: {
+        id: articleId,
+      },
+      data: {
+        contenu: newContent,
+      },
+    });
+
+    await prisma.$disconnect();
+  } catch (error) {
+    await prisma.$disconnect();
+    throw new Error("Content editing failed" + error);
+  }
 
   revalidatePath("/creations");
   revalidatePath("/editArticles");

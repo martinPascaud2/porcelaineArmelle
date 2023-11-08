@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import terracotta_background from "../../public/terracotta_background7.jpg";
 
 export default function Background() {

@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams, useParams } from "next/navigation";
+
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
   ChevronDoubleUpIcon,
 } from "@heroicons/react/24/outline";
-import { useSearchParams, useParams } from "next/navigation";
 
 import { inter } from "@/assets/fonts";
 
@@ -32,15 +33,17 @@ export default function Pagination({ pageMax }) {
             <ArrowLeftIcon className="block h-8 w-8 " />
           </Link>
         </div>
+
         <div className="scale-[1.08] ">
           <div
-            className={`${inter.className} bg-terra-100 border border-terra-600  rounded-lg mx-4 my-2 px-3 py-2 text-xl font-medium text-terra-600   `}
+            className={`${inter.className} bg-terra-100 border border-terra-600  rounded-lg mx-4 my-2 px-3 py-2 text-xl font-medium text-terra-600`}
           >
             <div className="block h-8 w-8 flex place-content-center pt-1">
               {page}
             </div>
           </div>
         </div>
+
         <div id="paginationNext" className={page >= pageMax ? "collapse" : ""}>
           <Link
             href={`/creations/${type}?page=${page + 1}`}
@@ -50,6 +53,7 @@ export default function Pagination({ pageMax }) {
           </Link>
         </div>
       </div>
+
       <button
         onClick={scrollToTop}
         className="sm:hidden mt-3 border border-terra-600 shadow shadow-terra-700 bg-terra-100 text-slate-600 rounded-full"

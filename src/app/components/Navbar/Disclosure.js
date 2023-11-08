@@ -2,15 +2,15 @@
 
 import { Disclosure as Dsclsr } from "@headlessui/react";
 import { usePathname } from "next/navigation";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+
 import { LogoutButton } from "./LogoutButton";
+import classNames from "@/utils/classNames";
 
 export default function Disclosure({ props, MainLogo }) {
   const { signOut, token, userStatus } = props;
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-  }
 
   const pathname = usePathname();
   const navigation = [
@@ -39,7 +39,7 @@ export default function Disclosure({ props, MainLogo }) {
   ];
 
   return (
-    <Dsclsr as="nav" className={`bg-terra-600 sticky top-0  sm:block`}>
+    <Dsclsr as="nav" className={`bg-terra-600 sticky top-0 sm:block`}>
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -56,9 +56,11 @@ export default function Disclosure({ props, MainLogo }) {
                     )}
                   </Dsclsr.Button>
                 </div>
+
                 <div className="flex flex-shrink-0 items-center">
                   {MainLogo}
                 </div>
+
                 <div className="hidden sm:block sm:ml-12">
                   <div className="flex space-x-6 mt-1">
                     {navigation.map((item) => (
@@ -67,14 +69,15 @@ export default function Disclosure({ props, MainLogo }) {
                         href={item.href}
                         className={classNames(
                           item.current
-                            ? "bg-terra-500 border border-slate-300"
-                            : "hover:shadow-button",
+                            ? "bg-terra-500 border border-slate-300 "
+                            : "hover:shadow-button hover:border hover:border-slate-300",
                           "rounded-md px-3 py-2 text-sm font-medium text-slate-100"
                         )}
                       >
                         {item.name}
                       </Link>
                     ))}
+
                     {userStatus === "Admin" &&
                       adminNavigation.map((item) => (
                         <Link
@@ -83,7 +86,7 @@ export default function Disclosure({ props, MainLogo }) {
                           className={classNames(
                             item.current
                               ? "bg-terra-500 border border-slate-300"
-                              : "hover:shadow-button",
+                              : "hover:shadow-button hover:border hover:border-slate-300",
                             "rounded-md px-3 py-2 text-sm font-medium text-slate-100"
                           )}
                         >
@@ -92,6 +95,7 @@ export default function Disclosure({ props, MainLogo }) {
                       ))}
                   </div>
                 </div>
+
                 {!token?.value ? (
                   <Link
                     href="/connect"

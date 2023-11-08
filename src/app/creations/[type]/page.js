@@ -1,22 +1,22 @@
 import Image from "next/image";
-import { amatic, inter, ibm } from "@/assets/fonts";
 import Link from "next/link";
 
-import { articlesPerPage } from "@/assets/globals";
-
+const { PrismaClient } = require("@prisma/client");
 const cloudinary = require("cloudinary").v2;
-
 cloudinary.config({
   cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+import { amatic, inter, ibm } from "@/assets/fonts";
+import { articlesPerPage } from "@/assets/globals";
+
 const Card = ({ article }) => {
   const imageUrl = cloudinary.url(article.mainImage);
 
   return (
-    <div className="border border-terra-500 border rounded-lg max-w-sm w-full h-fit ">
+    <div className="border border-terra-500 border rounded-lg max-w-sm w-full h-fit">
       <Image
         alt={`Image de l'article ${article.titre}`}
         src={imageUrl}
@@ -28,12 +28,14 @@ const Card = ({ article }) => {
         }}
         className="rounded-t-lg"
       />
+
       <div className="p-5 rounded-b-lg border-t border-slate-400 bg-slate-100 flex flex-col">
-        <h5
-          className={`${amatic.className} text-3xl font-bold text-terra-500  self-center	mb-6`}
+        <h2
+          className={`${amatic.className} text-3xl font-bold text-terra-500 self-center	mb-6`}
         >
           {article.titre}
-        </h5>
+        </h2>
+
         {article.contenu && (
           <div>
             <hr className="h-px mx-32 my-0 py-0 bg-slate-300 border-0" />
@@ -45,7 +47,7 @@ const Card = ({ article }) => {
           </div>
         )}
 
-        <div className="flex flex-inline ">
+        <div className="flex flex-inline">
           <Link
             href={`/creations?modal=${article.id}#carousel`}
             className={`${inter.className} bg-terra-100 border border-slate-400 rounded-lg rounded-md mx-4 my-2 px-3 py-2 text-sm font-medium text-slate-400 hover:border-slate-400 hover:text-slate-500 basis-20 flex justify-center shadow shadow-slate-400 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
@@ -58,15 +60,14 @@ const Card = ({ article }) => {
   );
 };
 
-const { PrismaClient } = require("@prisma/client");
-const prisma = new PrismaClient();
-
 export default async function Page({ params, searchParams }) {
   const { page } = searchParams;
   const paramType = decodeURIComponent(params.type);
 
   let articles;
   try {
+    const prisma = new PrismaClient();
+
     articles = await prisma.article.findMany({
       where: {
         type: paramType,
@@ -74,22 +75,27 @@ export default async function Page({ params, searchParams }) {
       skip: (parseInt(page) - 1) * articlesPerPage,
       take: articlesPerPage,
     });
+
     await prisma.$disconnect();
   } catch (error) {
-    console.error(error);
     await prisma.$disconnect();
+    throw new Error("Articles getting failed.");
   }
 
   let description;
   try {
+    const prisma = new PrismaClient();
+
     description = await prisma.description.findFirst({
       where: {
         type: paramType,
       },
     });
-  } catch (error) {
-    console.error(error);
+
     await prisma.$disconnect();
+  } catch (error) {
+    await prisma.$disconnect();
+    throw new Error("Global description getting failed.");
   }
 
   return (
@@ -101,6 +107,7 @@ export default async function Page({ params, searchParams }) {
           {description?.description}
         </div>
       )}
+
       <div className=" flex justify-center">
         <div
           className={`${

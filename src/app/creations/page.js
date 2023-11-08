@@ -1,8 +1,4 @@
-import Modal from "./modal";
-
 const { PrismaClient } = require("@prisma/client");
-
-const prisma = new PrismaClient();
 
 const cloudinary = require("cloudinary").v2;
 cloudinary.config({
@@ -11,6 +7,8 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+import Modal from "./modal";
+
 export default async function Page({ searchParams }) {
   const modalId = parseInt(searchParams?.modal);
 
@@ -18,18 +16,28 @@ export default async function Page({ searchParams }) {
     return <div>La page création /</div>;
   }
 
-  const article = await prisma.article.findFirst({
-    where: {
-      id: modalId,
-    },
-    include: {
-      imageList: true,
-    },
-  });
+  let articleName;
+  let imagesUrls;
+  try {
+    const prisma = new PrismaClient();
 
-  const imagesUrls = article.imageList.map((image) =>
-    cloudinary.url(image.url)
-  );
+    const article = await prisma.article.findFirst({
+      where: {
+        id: modalId,
+      },
+      include: {
+        imageList: true,
+      },
+    });
 
-  return <Modal imagesUrls={imagesUrls} />;
+    articleName = article.titre;
+    imagesUrls = article.imageList.map((image) => cloudinary.url(image.url));
+
+    await prisma.$disconnect();
+  } catch (error) {
+    await prisma.$disconnect();
+    throw new Error("Article getting failed.");
+  }
+
+  return <Modal name={articleName} imagesUrls={imagesUrls} />;
 }

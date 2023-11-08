@@ -17,7 +17,7 @@ export default function EditContentForm({ articleId, content }) {
 
   return (
     <form action={formAction}>
-      <label htmlFor="newContent">Description de l'article</label>
+      <label htmlFor="newContent">Description</label>
       <textarea
         placeholder="Description de l'article"
         id="newContent"
@@ -27,9 +27,14 @@ export default function EditContentForm({ articleId, content }) {
         onChange={(e) => setNewContent(e.currentTarget.value)}
         style={{ resize: "both" }}
         rows="3"
-        cols="33"
+        cols="100"
       />
-      <button type="submit">Modifier la description</button>
+      <button
+        type="submit"
+        className="border border-terra-800 bg-slate-100 text-terra-800"
+      >
+        Modifier la description de l&apos;article
+      </button>
     </form>
   );
 }

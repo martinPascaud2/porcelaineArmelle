@@ -1,19 +1,21 @@
 import { revalidatePath } from "next/cache";
-const { PrismaClient } = require("@prisma/client");
 
+const { PrismaClient } = require("@prisma/client");
 import CldImage from "@/components/CloudImage";
-import { DeleteArticle } from "../DeleteArticle";
-import { DeleteImage } from "../DeleteImage";
-import { DeleteMain } from "../DeleteMain";
-import { AddImageForm } from "../AddImageForm";
+
+import { AddImageForm } from "./AddImageForm";
+import { DeleteArticle } from "./DeleteArticle";
+import { DeleteImage } from "./DeleteImage";
+import { DeleteMain } from "./DeleteMain";
+import EditContentForm from "./EditContentForm";
 import EditDescriptionForm from "./EditDescriptionForm";
 import EditNameForm from "./EditNameForm";
-import EditContentForm from "./EditContentForm";
 
-export async function EditArticleList({ articleType: type }) {
+export async function ArticleList({ articleType: type }) {
   const articleType = decodeURIComponent(type);
   let articles;
   let description;
+
   try {
     const prisma = new PrismaClient();
     articles = await prisma.article.findMany({
@@ -35,9 +37,8 @@ export async function EditArticleList({ articleType: type }) {
 
     await prisma.$disconnect();
   } catch (error) {
-    console.error(error);
-    throw new Error("Articles finding aborted:");
     await prisma.$disconnect();
+    throw new Error("Articles finding aborted:");
   }
 
   const deleteArticle = async (id) => {
@@ -53,9 +54,8 @@ export async function EditArticleList({ articleType: type }) {
       await prisma.$disconnect();
       revalidatePath("/editArticles");
     } catch (error) {
-      console.error(error);
-      throw new Error("Article deletion aborted:");
       await prisma.$disconnect();
+      throw new Error("Article deletion aborted:");
     }
   };
 
@@ -72,9 +72,8 @@ export async function EditArticleList({ articleType: type }) {
       await prisma.$disconnect();
       revalidatePath("/editArticles");
     } catch (error) {
-      console.error(error);
-      throw new Error("Image deletion aborted:");
       await prisma.$disconnect();
+      throw new Error("Image deletion aborted:");
     }
   };
 
@@ -104,33 +103,35 @@ export async function EditArticleList({ articleType: type }) {
       await prisma.$disconnect();
       revalidatePath("/editArticles");
     } catch (error) {
-      console.error(error);
-      throw new Error("Main image deletion aborted:");
       await prisma.$disconnect();
+      throw new Error("Main image deletion aborted:");
     }
   };
 
   return (
-    <h1>
-      <div>articleType : {articleType}</div>
+    <div>
       <EditDescriptionForm
         articleType={articleType}
         description={description?.description}
       />
 
-      <p>-----------------</p>
+      <hr />
+      <hr />
+
       {articles.map((article) => {
         return (
           <div key={article.id}>
             <EditNameForm articleId={article.id} name={article.titre} />
+
             <EditContentForm articleId={article.id} content={article.contenu} />
+
             <CldImage
               width={960}
               height={600}
               style={{ width: "auto", height: "auto" }}
               src={article.mainImage}
               sizes="10vw"
-              alt="Description of my image"
+              alt={`Image principale de l'article ${article.titre}`}
               priority
             />
             {article.imageList.length > 1 && (
@@ -145,17 +146,19 @@ export async function EditArticleList({ articleType: type }) {
                   src={image.url}
                   sizes="10vw"
                   alt={`Image de l'article ${article.titre}`}
-                  priority
                 />
                 <DeleteImage id={image.id} deleteImage={deleteImage} />
               </div>
             ))}
+
             <AddImageForm articleId={article.id} />
+
             <DeleteArticle id={article.id} deleteArticle={deleteArticle} />
-            <p>-----------------</p>
+            <hr />
+            <hr />
           </div>
         );
       })}
-    </h1>
+    </div>
   );
 }

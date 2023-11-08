@@ -6,12 +6,9 @@ import { usePathname } from "next/navigation";
 import Image from "next/image";
 
 import { amatic } from "@/assets/fonts";
-
 import { types } from "@/assets/globals";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import classNames from "@/utils/classNames";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(0);
@@ -27,6 +24,7 @@ export default function Header() {
 
   const TypeLink = ({ type }) => {
     const href = `/creations/${type.name}?page=1`;
+
     const pathname = usePathname();
     const isActive = decodeURIComponent(pathname) === href.split("?")[0];
 
@@ -47,7 +45,7 @@ export default function Header() {
             width={500}
             height={500}
             sizes="100vw"
-            alt="Verseuses"
+            alt={`Lien vers ${type}`}
             className="rounded-md"
             style={{
               objectFit: "cover",

@@ -1,13 +1,11 @@
 "use client";
 
-import Image from "next/image";
-import { useState } from "react";
-import { amatic } from "@/assets/fonts";
-
-import React from "react";
-import Link from "next/link";
-
+import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
+
+import { amatic } from "@/assets/fonts";
 
 const useSwipe = (activeIndex, updateIndex, maxIndex) => {
   const [touchStart, setTouchStart] = useState(null);
@@ -35,21 +33,25 @@ const useSwipe = (activeIndex, updateIndex, maxIndex) => {
       updateIndex(activeIndex - 1);
     }
   };
+
   return { onTouchStart, onTouchMove, onTouchEnd };
 };
 
-export default function Modal({ imagesUrls }) {
+export default function Modal({ name, imagesUrls }) {
   const router = useRouter();
-
   const [activeIndex, setActiveIndex] = useState(0);
-  const updateIndex = (newIndex) => {
-    if (newIndex < 0) {
-      newIndex = 0;
-    } else if (newIndex >= imagesUrls.length - 1) {
-      newIndex = imagesUrls.length - 1;
-    }
-    setActiveIndex(newIndex);
-  };
+
+  const updateIndex = useCallback(
+    (newIndex) => {
+      if (newIndex < 0) {
+        newIndex = 0;
+      } else if (newIndex >= imagesUrls.length - 1) {
+        newIndex = imagesUrls.length - 1;
+      }
+      setActiveIndex(newIndex);
+    },
+    [imagesUrls.length]
+  );
 
   const { onTouchStart, onTouchMove, onTouchEnd } = useSwipe(
     activeIndex,
@@ -60,9 +62,10 @@ export default function Modal({ imagesUrls }) {
   const carouselItems = imagesUrls.map((image, i) => (
     <div key={i} className="inline-flex">
       <div className="carousel" />
+
       <div className=" flex flex-col">
         <Image
-          alt="Mountains"
+          alt={`Image de ${name}`}
           src={image}
           sizes="100vw"
           width={1800}
@@ -71,6 +74,7 @@ export default function Modal({ imagesUrls }) {
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
+          priority
         />
 
         <div className="absolute bottom-36 w-full ">
@@ -93,11 +97,12 @@ export default function Modal({ imagesUrls }) {
             </button>
           </div>
         </div>
+
         <div className="flex flex-col py-5 rounded-b-lg border border-t-slate-400 border-b-terra-500 border-l-terra-500 border-r-terra-500 bg-slate-100">
           <h5
             className={`${amatic.className} text-3xl font-bold text-terra-500 self-center mb-6`}
           >
-            Noteworthy technology acquisitions 2021
+            {name}
           </h5>
           <div className="flex flex-row w-full place-content-between mb-3">
             <button

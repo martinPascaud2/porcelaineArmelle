@@ -6,7 +6,7 @@ main {
   min-height: 100vh;
 }
 
-/* scrollbar */
+/*----------scrollbar----------*/
 body {
   -ms-overflow-style: none; /* Internet Explorer, Edge */
   scrollbar-width: none; /* Firefox */
@@ -15,13 +15,14 @@ body {
 body::-webkit-scrollbar {
   display: none; /* Chrome, Safari, and Opera */
 }
-
 ::-webkit-scrollbar {
   width: 0px;
   background: transparent; /* make scrollbar transparent */
 }
+/*----------scrollbar----------*/
 
-/* fixed mobile screen */
+/*----------fixed mobile screen----------*/
 body {
   overflow-x: hidden;
 }
+/*----------fixed mobile screen----------*/
