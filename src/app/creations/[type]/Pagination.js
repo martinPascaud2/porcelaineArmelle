@@ -3,13 +3,11 @@
 import Link from "next/link";
 import { useSearchParams, useParams } from "next/navigation";
 
-import {
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  ChevronDoubleUpIcon,
-} from "@heroicons/react/24/outline";
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 
 import { inter } from "@/assets/fonts";
+
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Pagination({ pageMax }) {
   const params = useParams();
@@ -17,10 +15,6 @@ export default function Pagination({ pageMax }) {
 
   const searchParams = useSearchParams();
   const page = parseInt(searchParams.get("page"));
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   return (
     <>
@@ -54,12 +48,7 @@ export default function Pagination({ pageMax }) {
         </div>
       </div>
 
-      <button
-        onClick={scrollToTop}
-        className="sm:hidden mt-3 border border-terra-600 shadow shadow-terra-700 bg-terra-100 text-slate-600 rounded-full"
-      >
-        <ChevronDoubleUpIcon className="block m-4 h-6 w-6 " />
-      </button>
+      <ScrollToTop />
     </>
   );
 }

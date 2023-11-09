@@ -102,7 +102,7 @@ export default async function Page({ params, searchParams }) {
     <>
       {page === "1" && (
         <div
-          className={`${ibm.className} m-12 sm:m-20 text-center text-3xl text-bold text-terra-500  w-11/12 sm:w-2/3`}
+          className={`${ibm.className} m-12 sm:m-20 text-center text-3xl text-bold text-terra-500  w-11/12 sm:w-2/3 leading-relaxed`}
         >
           {description?.description}
         </div>
