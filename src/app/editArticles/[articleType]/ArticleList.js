@@ -38,7 +38,7 @@ export async function ArticleList({ articleType: type }) {
     await prisma.$disconnect();
   } catch (error) {
     await prisma.$disconnect();
-    throw new Error("Articles finding aborted:");
+    throw new Error("Articles finding aborted:" + error);
   }
 
   const deleteArticle = async (id) => {
@@ -55,7 +55,7 @@ export async function ArticleList({ articleType: type }) {
       revalidatePath("/editArticles");
     } catch (error) {
       await prisma.$disconnect();
-      throw new Error("Article deletion aborted:");
+      throw new Error("Article deletion aborted:" + error);
     }
   };
 
@@ -73,7 +73,7 @@ export async function ArticleList({ articleType: type }) {
       revalidatePath("/editArticles");
     } catch (error) {
       await prisma.$disconnect();
-      throw new Error("Image deletion aborted:");
+      throw new Error("Image deletion aborted:" + error);
     }
   };
 
@@ -104,7 +104,7 @@ export async function ArticleList({ articleType: type }) {
       revalidatePath("/editArticles");
     } catch (error) {
       await prisma.$disconnect();
-      throw new Error("Main image deletion aborted:");
+      throw new Error("Main image deletion aborted:" + error);
     }
   };
 

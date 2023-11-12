@@ -52,8 +52,8 @@ export default async function Page({ searchParams }) {
     await prisma.$disconnect();
   } catch (error) {
     await prisma.$disconnect();
-    throw new Error("Article getting failed.");
+    throw new Error("Article getting failed:" + error);
   }
 
-  return <Modal name={articleName} imagesUrls={imagesUrls} />;
+  return <Modal name={articleName} imagesUrls={imagesUrls} id={modalId} />;
 }

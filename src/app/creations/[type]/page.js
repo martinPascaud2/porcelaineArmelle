@@ -79,7 +79,7 @@ export default async function Page({ params, searchParams }) {
     await prisma.$disconnect();
   } catch (error) {
     await prisma.$disconnect();
-    throw new Error("Articles getting failed.");
+    throw new Error("Articles getting failed: " + error);
   }
 
   let description;
@@ -95,7 +95,7 @@ export default async function Page({ params, searchParams }) {
     await prisma.$disconnect();
   } catch (error) {
     await prisma.$disconnect();
-    throw new Error("Global description getting failed.");
+    throw new Error("Global description getting failed:" + error);
   }
 
   return (
@@ -108,7 +108,7 @@ export default async function Page({ params, searchParams }) {
         </div>
       )}
 
-      <div className=" flex justify-center">
+      <div className="flex justify-center">
         <div
           className={`${
             parseInt(page) > 1 && "mt-12"

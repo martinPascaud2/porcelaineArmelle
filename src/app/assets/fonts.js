@@ -14,3 +14,10 @@ export const ibm = IBM_Plex_Serif({
   subsets: ["latin"],
   display: "swap",
 });
+
+export const ibmNotItalic = IBM_Plex_Serif({
+  weight: ["500", "700"],
+  style: "normal",
+  subsets: ["latin"],
+  display: "swap",
+});

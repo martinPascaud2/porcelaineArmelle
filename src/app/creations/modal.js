@@ -37,7 +37,7 @@ const useSwipe = (activeIndex, updateIndex, maxIndex) => {
   return { onTouchStart, onTouchMove, onTouchEnd };
 };
 
-export default function Modal({ name, imagesUrls }) {
+export default function Modal({ name, imagesUrls, id }) {
   const router = useRouter();
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -63,7 +63,7 @@ export default function Modal({ name, imagesUrls }) {
     <div key={i} className="inline-flex">
       <div className="carousel" />
 
-      <div className=" flex flex-col">
+      <div className="flex flex-col">
         <Image
           alt={`Image de ${name}`}
           src={image}
@@ -113,7 +113,7 @@ export default function Modal({ name, imagesUrls }) {
             </button>
 
             <Link
-              href="#"
+              href={`/contact?id=${id}`}
               className="mr-6 bg-terra-100 border border-1 border-slate-400 rounded-lg rounded-md px-3 py-2 text-sm font-medium text-slate-400 hover:border-slate-400 hover:text-slate-500 basis-20 flex justify-center shadow shadow-slate-400 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
             >
               Contact
