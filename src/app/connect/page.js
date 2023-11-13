@@ -9,7 +9,7 @@ export default async function Page(params) {
 
   if (!token) {
     return (
-      <main>
+      <main className="flex flex-col justify-center items-center">
         <LoginForm />
       </main>
     );

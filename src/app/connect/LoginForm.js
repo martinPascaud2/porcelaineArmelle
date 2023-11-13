@@ -5,7 +5,7 @@ import { experimental_useFormState as useFormState } from "react-dom";
 import { connect } from "@/api/connect/actions";
 
 const initialState = {
-  message: "Ton mot de passe",
+  message: "Mot de passe",
   status: 100,
 };
 
@@ -13,7 +13,10 @@ export function LoginForm() {
   const [state, formAction] = useFormState(connect, initialState);
 
   return (
-    <form action={formAction}>
+    <form
+      action={formAction}
+      className="flex flex-col justify-center items-center"
+    >
       <label htmlFor="password">{state.message}</label>
       <input type="password" name="password" id="password" autoFocus />
       <button type="submit">Se connecter</button>
