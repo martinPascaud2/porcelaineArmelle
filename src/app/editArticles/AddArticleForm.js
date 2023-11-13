@@ -32,7 +32,12 @@ export function AddArticleForm() {
       ...prevFileInputs,
       <div key={index} id={index}>
         <input type="file" name="file" required />
-        <button onClick={() => deleteInput(index)}>Enlever</button>
+        <button
+          onClick={() => deleteInput(index)}
+          className="border border-slate-100 bg-terra-800 text-slate-100"
+        >
+          Enlever
+        </button>
       </div>,
     ]);
     setIndex((prevIndex) => prevIndex + 1);
@@ -71,7 +76,12 @@ export function AddArticleForm() {
       <input key={0} type="file" name="file" required />
       {fileInputs}
 
-      <button onClick={() => addInput()}>Image supplémentaire</button>
+      <button
+        onClick={() => addInput()}
+        className="border border-terra-800 bg-slate-100 text-terra-800"
+      >
+        Image supplémentaire
+      </button>
 
       <textarea
         type="text"
