@@ -97,7 +97,7 @@ export default function Disclosure({ props, MainLogo }) {
                   </div>
                 </div>
 
-                <div className="ml-10 self-center">
+                <div className="ml-8 self-center">
                   <SocialIcon
                     network="instagram"
                     url="https://www.instagram.com/atelier.pascaud/"
