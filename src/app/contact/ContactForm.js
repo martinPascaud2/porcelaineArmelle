@@ -20,7 +20,7 @@ export function SubmitButton() {
   return (
     <button
       type="submit"
-      className="m-3 px-3 py-2 border border-terra-600 shadow shadow-terra-700 bg-terra-100 text-slate-600 flex flex-row"
+      className="m-3 px-3 py-2 border border-terra-600 shadow shadow-terra-700 hover:shadow-none transition-shadow duration-300 ease-in-out bg-terra-100 text-slate-600 flex flex-row"
       aria-disabled={pending}
     >
       {pending ? (

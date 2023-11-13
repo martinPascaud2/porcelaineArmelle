@@ -9,6 +9,7 @@ export default async function getPageMax(articleType) {
     articlesNumber = await prisma.article.count({
       where: { type: articleType },
     });
+
     await prisma.$disconnect();
   } catch (error) {
     await prisma.$disconnect();
