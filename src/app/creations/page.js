@@ -21,12 +21,13 @@ export default async function Page({ searchParams }) {
       <div
         className={`${ibm.className} mx-auto text-terra-500 flex flex-col items-center`}
       >
-        <div className="invisible sm:visible fixed mt-6 border border-terra-600 shadow shadow-terra-700 bg-terra-100 text-slate-600 rounded-full animate-bounce">
+        <div className="invisible sm:visible fixed mt-6 border border-terra-600 bg-terra-100 text-slate-600 rounded-full animate-bounce">
           <ArrowUpIcon className="block m-4 h-8 w-8" />
         </div>
         <h1 className="mt-12 sm:mt-24 w-11/12 sm:w-2/3 text-3xl text-bold text-center leading-relaxed">
           {globalPresentation}
         </h1>
+        <div>Photo de présentation</div>
         <ScrollToTop />
       </div>
     );

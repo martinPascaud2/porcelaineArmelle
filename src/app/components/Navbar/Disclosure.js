@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { SocialIcon } from "react-social-icons";
 
 import { LogoutButton } from "./LogoutButton";
 import classNames from "@/utils/classNames";
@@ -70,7 +71,7 @@ export default function Disclosure({ props, MainLogo }) {
                         className={classNames(
                           item.current
                             ? "bg-terra-500 border border-slate-300 "
-                            : "hover:shadow-button hover:border hover:border-slate-300",
+                            : "hover:shadow-button border border-terra-600 hover:border-slate-300",
                           "rounded-md px-3 py-2 text-sm font-medium text-slate-100"
                         )}
                       >
@@ -86,7 +87,7 @@ export default function Disclosure({ props, MainLogo }) {
                           className={classNames(
                             item.current
                               ? "bg-terra-500 border border-slate-300"
-                              : "hover:shadow-button hover:border hover:border-slate-300",
+                              : "hover:shadow-button border border-terra-600 hover:border-slate-300",
                             "rounded-md px-3 py-2 text-sm font-medium text-slate-100"
                           )}
                         >
@@ -96,10 +97,31 @@ export default function Disclosure({ props, MainLogo }) {
                   </div>
                 </div>
 
+                <div className="ml-10 self-center">
+                  <SocialIcon
+                    network="instagram"
+                    url="https://www.instagram.com/atelier.pascaud/"
+                    target="_blank"
+                    bgColor="#c75e37"
+                    style={{
+                      height: "2rem",
+                      width: "2rem",
+                      marginRight: "1.5rem",
+                    }}
+                  />
+                  <SocialIcon
+                    network="facebook"
+                    url="https://www.facebook.com/atelierpascaud"
+                    target="_blank"
+                    bgColor="#c75e37"
+                    style={{ height: "2rem", width: "2rem" }}
+                  />
+                </div>
+
                 {!token?.value ? (
                   <Link
                     href="/connect"
-                    className="text-slate-100 hover:bg-terra-700 rounded-md px-3 py-2 text-sm font-medium mb-2 mt-1 absolute right-0"
+                    className="hidden sm:block text-slate-100 hover:bg-terra-700 rounded-md px-3 py-2 text-sm font-medium mb-2 mt-1 absolute right-0"
                   >
                     Se connecter
                   </Link>
