@@ -20,11 +20,11 @@ export function SubmitButton() {
   return (
     <button
       type="submit"
-      className="m-3 px-3 py-2 border border-terra-600 shadow shadow-terra-700 hover:shadow-none transition-shadow duration-300 ease-in-out bg-terra-100 text-slate-600 flex flex-row"
+      className="m-3 px-3 py-2 border border-terra-800 shadow shadow-terra-800 hover:shadow-none transition-shadow duration-300 ease-in-out bg-terra-100 text-terra-800"
       aria-disabled={pending}
     >
       {pending ? (
-        <div className="animate-spin rounded-full h-5 w-5 border-t-4 border-terra-500 border-solid"></div>
+        <div className="animate-spin rounded-full h-5 w-5 border-t-4 border-terra-800 border-solid"></div>
       ) : (
         <div>Envoyer</div>
       )}
@@ -43,13 +43,17 @@ export default function ContactForm({ subject }) {
     }
   }, [state]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
   return (
     <form
       action={formAction}
       ref={refForm}
-      className="flex flex-col justify-center items-center w-11/12 sm:w-1/3 px-6 py-3 border border-terra-500 bg-slate-100 rounded-lg"
+      className="flex flex-col justify-center items-center w-11/12 sm:w-1/3 px-6 py-3 border-2 border-terra-800 bg-slate-100 rounded-lg"
     >
-      <label htmlFor="subject" className="text-terra-500">
+      <label htmlFor="subject" className="text-terra-800">
         Sujet
       </label>
       <input
@@ -58,11 +62,12 @@ export default function ContactForm({ subject }) {
         name="subject"
         defaultValue={subject}
         readOnly={readOnly}
+        disabled={readOnly}
         required
-        className={`${ibmNotItalic.className} text-slate-700 w-full mt-1 mb-10 border border-terra-300 focus:border-2 focus:border-terra-500 focus:outline-none p-1 rounded-lg`}
+        className={`${ibmNotItalic.className} text-terra-800 w-full mt-1 mb-10 border border-terra-800 focus:border-2 focus:outline-none p-1 rounded-lg`}
       />
 
-      <label htmlFor="message" className="text-terra-500">
+      <label htmlFor="message" className="text-terra-800">
         Votre message
       </label>
       <textarea
@@ -71,10 +76,10 @@ export default function ContactForm({ subject }) {
         name="message"
         rows="5"
         required
-        className={`${ibmNotItalic.className} text-slate-700 w-full mt-1 mb-10 border border-terra-300 focus:border-2 focus:border-terra-500 focus:outline-none p-1 rounded-lg`}
+        className={`${ibmNotItalic.className} text-terra-800 w-full mt-1 mb-10 border border-terra-800 focus:border-2 focus:outline-none p-1 rounded-lg`}
       />
 
-      <label htmlFor="mail" className="text-terra-500">
+      <label htmlFor="mail" className="text-terra-800">
         Votre adresse mail
       </label>
       <input
@@ -82,7 +87,7 @@ export default function ContactForm({ subject }) {
         type="email"
         name="mail"
         required
-        className={`${ibmNotItalic.className} text-slate-700 not-italic w-full mt-1 mb-10 border border-terra-300 focus:border-2 focus:border-terra-500 focus:outline-none p-1 rounded-lg`}
+        className={`${ibmNotItalic.className} text-terra-800 w-full mt-1 mb-10 border border-terra-800 focus:border-2 focus:outline-none p-1 rounded-lg`}
       />
 
       <div className="text-justify text-terra-500 font-bold">

@@ -19,12 +19,12 @@ export default async function Page({ searchParams }) {
   if (!modalId) {
     return (
       <div
-        className={`${ibm.className} mx-auto text-terra-500 flex flex-col items-center`}
+        className={`${ibm.className} mx-auto text-terra-800 flex flex-col items-center`}
       >
-        <div className="invisible sm:visible fixed mt-6 border border-terra-600 bg-terra-100 text-slate-600 rounded-full animate-bounce">
+        <div className="sticky top-48 sm:top-52 mt-6 border border-terra-800 bg-terra-100 text-terra-800 rounded-full animate-bounce">
           <ArrowUpIcon className="block m-4 h-8 w-8" />
         </div>
-        <h1 className="mt-12 sm:mt-24 w-11/12 sm:w-2/3 text-3xl text-bold text-center leading-relaxed">
+        <h1 className="w-11/12 sm:w-2/3 text-3xl text-bold text-center leading-relaxed">
           {globalPresentation}
         </h1>
         <div>Photo de présentation</div>

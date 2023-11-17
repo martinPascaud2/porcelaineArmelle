@@ -18,21 +18,19 @@ export default function Pagination({ pageMax }) {
 
   return (
     <>
-      <div className="mt-8 flex flex-row gap-3 ">
+      <div className="m-4 flex flex-row gap-3 ">
         <div className={page === 1 ? "collapse" : ""}>
           <Link
             href={`/creations/${type}?page=${page - 1}`}
-            className={`${inter.className} bg-terra-100 border border-terra-600  rounded-lg mx-4 my-2 px-3 py-2 text-sm font-medium text-terra-600 hover:border-terra-600  basis-20 flex justify-center shadow shadow-terra-600 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
+            className="bg-slate-100 border border-slate-800 rounded-lg mx-2 my-2 px-3 py-2 text-sm font-medium text-slate-800 basis-20 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
           >
             <ArrowLeftIcon className="block h-8 w-8 " />
           </Link>
         </div>
 
         <div className="scale-[1.08] ">
-          <div
-            className={`${inter.className} bg-terra-100 border border-terra-600  rounded-lg mx-4 my-2 px-3 py-2 text-xl font-medium text-terra-600`}
-          >
-            <div className="block h-8 w-8 flex place-content-center pt-1">
+          <div className="bg-terra-100 border border-terra-800 rounded-lg mx-2 my-2 px-3 py-2 text-2xl font-medium text-terra-800">
+            <div className="block h-8 w-8 flex place-content-center">
               {page}
             </div>
           </div>
@@ -41,7 +39,7 @@ export default function Pagination({ pageMax }) {
         <div id="paginationNext" className={page >= pageMax ? "collapse" : ""}>
           <Link
             href={`/creations/${type}?page=${page + 1}`}
-            className={`${inter.className} bg-terra-100 border border-terra-600  rounded-lg mx-4 my-2 px-3 py-2 text-sm font-medium text-terra-600 hover:border-terra-600  basis-20 flex justify-center shadow shadow-terra-600 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
+            className="bg-slate-100 border border-slate-800 rounded-lg mx-2 my-2 px-3 py-2 text-sm font-medium text-slate-800 basis-20 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
           >
             <ArrowRightIcon className="block h-8 w-8" />
           </Link>

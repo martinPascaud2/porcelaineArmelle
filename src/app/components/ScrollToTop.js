@@ -9,7 +9,7 @@ export default function ScrollToTop() {
   return (
     <button
       onClick={scrollToTop}
-      className="sm:hidden mt-3 border border-terra-600 shadow shadow-terra-700 bg-terra-100 text-slate-600 rounded-full"
+      className="sm:hidden mb-4 border border-terra-800 shadow shadow-terra-700 bg-terra-100 text-terra-800 rounded-full"
     >
       <ChevronDoubleUpIcon className="block m-4 h-6 w-6 " />
     </button>

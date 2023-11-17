@@ -27,9 +27,9 @@ export default async function Page({ searchParams }) {
   const subject = id ? `Création : ${article?.titre}` : "";
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center">
+    <div className="h-screen flex flex-col justify-start items-center">
       <h1
-        className={`w-11/12 text-center ${ibm.className} text-terra-500 text-3xl mb-6 sm:mb-12`}
+        className={`w-11/12 text-center ${ibm.className} text-terra-800 text-3xl mb-6 sm:m-12`}
       >
         Contactez-moi ! Je vous répondrai rapidement.
       </h1>

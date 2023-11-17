@@ -1,28 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import home from "/public/home.jpg";
+import home from "/public/home3.jpg";
 import { amatic, ibm } from "./assets/fonts";
 
 export default function Home() {
   return (
-    <main className="relative flex justify-center items-center">
+    <main className="relative flex flex-col justify-center items-center">
       <Image
         src={home}
         alt="Bannière de la page d'accueil"
-        className="absolute top-16 z-0 border-y-2 border-slate-300"
-        style={{ width: "100%", height: "60%", objectFit: "cover" }}
+        className="absolute top-0 z-0 border-y-2 border-terra-800 brightness-[.70]"
+        style={{ width: "100%", height: "100%", objectFit: "cover" }}
         priority
       />
 
-      <div className="z-10 absolute top-44 text-slate-300 flex flex-col items-center ml-4">
+      <div className="z-10 text-slate-100 flex flex-col items-center">
         <div className="">
           <svg
             version="1.0"
-            className="h-16 w-16"
+            className="h-20 w-20"
             style={{
               filter:
-                "invert(93%) sepia(6%) saturate(653%) hue-rotate(182deg) brightness(91%) contrast(93%)",
+                "invert(94%) sepia(2%) saturate(1074%) hue-rotate(189deg) brightness(105%) contrast(95%)",
             }}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 286.000000 286.000000"
@@ -30,7 +30,7 @@ export default function Home() {
             <g
               transform="translate(0.000000,238.000000) scale(0.100000,-0.100000)"
               stroke="currentColor"
-              strokeWidth="30"
+              strokeWidth="0"
             >
               <path
                 d="M400 2299 c-121 -24 -246 -126 -303 -246 l-32 -68 -3 -785 c-2 -528
@@ -60,20 +60,13 @@ export default function Home() {
             </g>
           </svg>
         </div>
-        <div
-          className={`${amatic.className} text-6xl text-slate-300 hidden sm:block ml-4`}
-        >
+        <div className={`${amatic.className} text-6xl text-slate-100`}>
           Atelier Pascaud
-        </div>
-        <div
-          className={`${amatic.className} text-6xl text-slate-300 sm:hidden `}
-        >
-          A. Pascaud
         </div>
       </div>
       <Link
         href={`${process.env.NEXT_PUBLIC_APP_URL}/creations`}
-        className={`z-10 px-4 py-3 absolute top-80 border-2 rounded-lg border-terra-600 bg-slate-100 text-7xl ${ibm.className} text-terra-600 ml-4`}
+        className={`z-10 px-4 py-3 border-2 rounded-lg border-terra-800 bg-slate-100 text-6xl ${ibm.className} text-terra-800 mt-3`}
       >
         Découvrir
       </Link>

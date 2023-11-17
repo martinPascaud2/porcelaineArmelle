@@ -1,4 +1,4 @@
-import { Inter, Amatic_SC, IBM_Plex_Serif } from "next/font/google";
+import { Inter, Amatic_SC, IBM_Plex_Serif, Figtree } from "next/font/google";
 
 export const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -17,6 +17,13 @@ export const ibm = IBM_Plex_Serif({
 
 export const ibmNotItalic = IBM_Plex_Serif({
   weight: ["500", "700"],
+  style: "normal",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+export const figtree = Figtree({
+  weight: ["300", "400", "500"],
   style: "normal",
   subsets: ["latin"],
   display: "swap",

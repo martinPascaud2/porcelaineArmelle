@@ -8,7 +8,10 @@ module.exports = {
   theme: {
     colors: {
       terra: {
-        100: "#f3ded7",
+        // 100: "#f3ded7",//palette
+        // 100: "#fff2e0", //pipette claire
+        100: "#f8e5d5", //pipette
+        // 100: "#fae7dc", //armelle
         200: "#e8beaf",
         300: "#dd9e87",
         400: "#d27e5f",

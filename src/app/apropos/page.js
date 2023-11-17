@@ -11,18 +11,18 @@ export default async function Page() {
       {years.map((year) => {
         const yearExperiences = experiencesData[year].map((experienceData) => {
           const experience = (
-            <div className="m-4 py-1 border border-terra-600 bg-slate-100 flex flex-col items-center">
+            <div className="m-4 py-1 border border-terra-800 bg-slate-100 flex flex-col items-center">
               <div
-                className={`${ibmNotItalic.className} text-2xl sm:text-4xl text-terra-600`}
+                className={`${ibmNotItalic.className} text-2xl sm:text-4xl text-terra-800`}
               >
                 {experienceData.name}
               </div>
               <div
-                className={`${ibm.className} text-xl sm:text-3xl text-terra-600`}
+                className={`${ibm.className} text-xl sm:text-3xl text-terra-800`}
               >
                 {experienceData.address}
               </div>
-              <div className="border-y border-slate-400">
+              <div className="border-y border-terra-800">
                 <Image
                   src={experienceData.imagePath}
                   alt={`Image de ${experienceData.name}`}
@@ -31,7 +31,7 @@ export default async function Page() {
                 />
               </div>
               <div
-                className={`${ibmNotItalic.className} text-xl sm:text-3xl text-slate-600`}
+                className={`${ibmNotItalic.className} text-xl sm:text-3xl text-terra-800`}
               >
                 {experienceData.dates}
               </div>
@@ -42,7 +42,7 @@ export default async function Page() {
         return (
           <section key={year} className="sm:m-4 flex flex-col items-center">
             <div
-              className={`${ibmNotItalic.className} text-5xl text-slate-600 underline underline-offset-4`}
+              className={`${ibmNotItalic.className} text-5xl text-slate-800 mb-2`}
             >
               {year}
             </div>

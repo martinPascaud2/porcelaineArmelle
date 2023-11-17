@@ -70,7 +70,7 @@ export default function Modal({ name, imagesUrls, id }) {
           sizes="100vw"
           width={1800}
           height={1125}
-          className="rounded-t-lg border-t border-l border-r border-terra-500"
+          className="rounded-t-lg border border-terra-800"
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
@@ -83,7 +83,7 @@ export default function Modal({ name, imagesUrls, id }) {
               onClick={() => updateIndex(activeIndex - 1)}
               className={`${
                 activeIndex === 0 ? "collapse" : "visible"
-              } bg-terra-100 border border-1 border-slate-400 rounded-lg rounded-md px-3 py-0 text-lg font-medium text-slate-500 hover:border-slate-400 hover:text-slate-500 basis-24 sm:basis-32 flex justify-center shadow shadow-slate-400 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
+              } bg-slate-100 border border-1 border-slate-800 rounded-lg rounded-md px-3 py-0 text-lg font-medium text-slate-800 basis-24 sm:basis-32 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
             >
               {"<"}
             </button>
@@ -91,30 +91,30 @@ export default function Modal({ name, imagesUrls, id }) {
               onClick={() => updateIndex(activeIndex + 1)}
               className={`${
                 activeIndex === imagesUrls.length - 1 ? "collapse" : "visible"
-              } bg-terra-100 border border-1 border-slate-400 rounded-lg rounded-md px-3 py-0 text-lg font-medium text-slate-500 hover:border-slate-400 hover:text-slate-500 basis-24 sm:basis-32 flex justify-center shadow shadow-slate-400  transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
+              } bg-slate-100 border border-1 border-slate-800 rounded-lg rounded-md px-3 py-0 text-lg font-medium text-slate-800 basis-24 sm:basis-32 flex justify-center shadow shadow-slate-500  transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
             >
               {">"}
             </button>
           </div>
         </div>
 
-        <div className="flex flex-col py-5 rounded-b-lg border border-t-slate-400 border-b-terra-500 border-l-terra-500 border-r-terra-500 bg-slate-100">
+        <div className="flex flex-col py-4 rounded-b-lg border-t-0 border-b border-x border-terra-800 bg-terra-100">
           <h5
-            className={`${amatic.className} text-3xl font-bold text-terra-500 self-center mb-6`}
+            className={`${amatic.className} text-4xl font-bold text-terra-800 self-center mb-6`}
           >
             {name}
           </h5>
           <div className="flex flex-row w-full place-content-between mb-3">
             <button
               onClick={router.back}
-              className="ml-6 bg-terra-100 border border-1 border-slate-400 rounded-lg rounded-md px-3 py-2 text-sm font-medium text-slate-400 hover:border-slate-400 hover:text-slate-500 basis-20 flex justify-center shadow shadow-slate-400 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
+              className="ml-8 bg-slate-100 border border-1 border-slate-800 rounded-lg rounded-md px-3 py-2 text-sm font-normal text-slate-800 basis-20 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
             >
               Retour
             </button>
 
             <Link
               href={`/contact?id=${id}`}
-              className="mr-6 bg-terra-100 border border-1 border-slate-400 rounded-lg rounded-md px-3 py-2 text-sm font-medium text-slate-400 hover:border-slate-400 hover:text-slate-500 basis-20 flex justify-center shadow shadow-slate-400 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
+              className="mr-8 bg-slate-100 border border-1 border-slate-800 rounded-lg rounded-md px-3 py-2 text-sm font-normal text-slate-800 basis-20 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
             >
               Contact
             </Link>

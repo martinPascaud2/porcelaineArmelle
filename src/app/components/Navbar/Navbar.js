@@ -14,21 +14,21 @@ export async function Navbar() {
 
   const MainLogo = (
     <Link href="/" className="flex">
-      <div className="ml-3 sm:ml-0">
+      <div>
         <svg
           version="1.0"
-          className="h-12 w-12"
+          className="h-28 w-28 sm:h-32 sm:w-32"
           style={{
             filter:
-              "invert(93%) sepia(6%) saturate(653%) hue-rotate(182deg) brightness(91%) contrast(93%)",
+              "invert(14%) sepia(52%) saturate(896%) hue-rotate(332deg) brightness(95%) contrast(93%)",
           }}
           xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 286.000000 286.000000"
+          viewBox="0 0 283.000000 283.000000"
         >
           <g
             transform="translate(0.000000,238.000000) scale(0.100000,-0.100000)"
             stroke="currentColor"
-            strokeWidth="30"
+            strokeWidth="0"
           >
             <path
               d="M400 2299 c-121 -24 -246 -126 -303 -246 l-32 -68 -3 -785 c-2 -528
@@ -57,16 +57,6 @@ export async function Navbar() {
             />
           </g>
         </svg>
-      </div>
-      <div
-        className={`${amatic.className} text-4xl text-slate-300 hidden sm:block ml-2`}
-      >
-        Atelier Pascaud
-      </div>
-      <div
-        className={`${amatic.className} text-4xl text-slate-300 sm:hidden ml-2`}
-      >
-        A. Pascaud
       </div>
     </Link>
   );
