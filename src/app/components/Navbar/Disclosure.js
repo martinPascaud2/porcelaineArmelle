@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { SocialIcon } from "react-social-icons";
 
-import { LogoutButton } from "./LogoutButton";
+import { LoginButton, LogoutButton } from "./LogsButtons";
 import classNames from "@/utils/classNames";
 import { types } from "@/assets/globals";
 import { figtree } from "@/assets/fonts";
@@ -47,7 +47,7 @@ export default function Disclosure({ props, MainLogo }) {
     },
   ];
 
-  const isNoHeader = ["/", "/apropos", "/contact"].some(
+  const isNoHeader = ["/", "/apropos", "/contact", "/connect"].some(
     (path) => path === pathname
   );
 
@@ -168,12 +168,7 @@ export default function Disclosure({ props, MainLogo }) {
                 </div>
 
                 {!token?.value ? (
-                  <Link
-                    href="/connect"
-                    className=" absolute top-2 right-2 hidden sm:block border border-terra-800 text-terra-800 hover:bg-slate-100 rounded-md px-4 py-3 text-sm font-medium absolute right-0 self-center"
-                  >
-                    Se connecter
-                  </Link>
+                  <LoginButton />
                 ) : (
                   <LogoutButton signOut={signOut} />
                 )}

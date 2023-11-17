@@ -18,7 +18,13 @@ export function LoginForm() {
       className="flex flex-col justify-center items-center"
     >
       <label htmlFor="password">{state.message}</label>
-      <input type="password" name="password" id="password" autoFocus />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        autoFocus
+        className="border border-terra-800 focus:outline-none focus:border-2 focus:border-terra-800"
+      />
       <button type="submit">Se connecter</button>
       <p aria-live="polite" className="sr-only">
         {state?.message}
