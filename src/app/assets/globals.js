@@ -1,16 +1,16 @@
 export const types = [
   {
     name: "Verseuses",
-    imagePath: `${process.env.NEXT_PUBLIC_APP_URL}/verseuses.jpeg`,
+    imagePath: `${process.env.NEXT_PUBLIC_APP_URL}/verseuses.jpg`,
   },
   {
     name: "Coulée verte",
-    imagePath: `${process.env.NEXT_PUBLIC_APP_URL}/coulée verte.jpeg`,
+    imagePath: `${process.env.NEXT_PUBLIC_APP_URL}/coulée verte.jpg`,
   },
 
   {
     name: "Truc",
-    imagePath: `${process.env.NEXT_PUBLIC_APP_URL}/truc.jpeg`,
+    imagePath: `${process.env.NEXT_PUBLIC_APP_URL}/truc.jpg`,
   },
 ];
 
