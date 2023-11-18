@@ -25,13 +25,13 @@ export const experiencesData = {
       name: "ÉTABLI 65",
       address: "9 avenue Sommeiller, Annecy",
       dates: "du 01/07 au 30/09",
-      imagePath: `${process.env.NEXT_PUBLIC_APP_URL}/apropos/Etabli_65.jpeg`,
+      imagePath: `${process.env.NEXT_PUBLIC_APP_URL}/apropos/Etabli-65.jpeg`,
     },
     {
       name: "MA CHOUETTE BOUTIQUE",
       address: "9 faubourg des Annonciades, Annecy",
       dates: "du 01/03 au 30/06",
-      imagePath: `${process.env.NEXT_PUBLIC_APP_URL}/apropos/Ma_Chouette_boutique.jpeg`,
+      imagePath: `${process.env.NEXT_PUBLIC_APP_URL}/apropos/Ma-Chouette-boutique.jpeg`,
     },
   ],
 
