@@ -47,9 +47,13 @@ export default function Disclosure({ props, MainLogo }) {
     },
   ];
 
-  const isNoHeader = ["/", "/apropos", "/contact", "/connect"].some(
-    (path) => path === pathname
-  );
+  const isNoHeader = [
+    "/",
+    "/apropos",
+    "/contact",
+    "/connect",
+    "/editArticles",
+  ].some((path) => path === pathname);
 
   const [scrolled, setScrolled] = useState(0);
   useEffect(() => {

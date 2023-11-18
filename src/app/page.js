@@ -10,7 +10,7 @@ export default function Home() {
       <Image
         src={home}
         alt="Bannière de la page d'accueil"
-        className="absolute top-0 z-0 border-y-2 border-terra-800 brightness-[.70]"
+        className="absolute top-0 z-0 border-y border-terra-800 brightness-[.70]"
         style={{ width: "100%", height: "100%", objectFit: "cover" }}
         priority
       />
