@@ -31,7 +31,7 @@ export const experiencesData = {
       name: "MA CHOUETTE BOUTIQUE",
       address: "9 faubourg des Annonciades, Annecy",
       dates: "du 01/03 au 30/06",
-      imagePath: `${process.env.NEXT_PUBLIC_APP_URL}/apropos/Ma-Chouette-boutique.jpeg`,
+      imagePath: `${process.env.NEXT_PUBLIC_APP_URL}/apropos/Ma-chouette-boutique.jpeg`,
     },
   ],
 
