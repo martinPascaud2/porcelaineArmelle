@@ -27,7 +27,7 @@ export default async function Page({ searchParams }) {
   const subject = id ? `Création : ${article?.titre}` : "";
 
   return (
-    <div className="h-screen flex flex-col justify-start items-center">
+    <div className="h-screen flex flex-col justify-start items-center mt-12">
       <h1
         className={`w-11/12 text-center ${ibm.className} text-terra-800 text-3xl mb-6 sm:m-12`}
       >
