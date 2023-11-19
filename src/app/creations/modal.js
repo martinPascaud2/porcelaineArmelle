@@ -6,6 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { amatic } from "@/assets/fonts";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 const useSwipe = (activeIndex, updateIndex, maxIndex) => {
   const [touchStart, setTouchStart] = useState(null);
@@ -77,44 +78,44 @@ export default function Modal({ name, imagesUrls, id }) {
           priority
         />
 
-        <div className="absolute bottom-36 w-full ">
+        <div className="absolute bottom-32 w-full ">
           <div className="flex flex-row justify-between sm:justify-center gap-8">
             <button
               onClick={() => updateIndex(activeIndex - 1)}
               className={`${
                 activeIndex === 0 ? "collapse" : "visible"
-              } bg-slate-100 border border-1 border-slate-800 rounded-lg rounded-md px-3 py-0 text-lg font-medium text-slate-800 basis-24 sm:basis-32 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
+              } h-6 bg-slate-100 border border-1 border-slate-800 rounded-md px-0 pt-0.5 text-lg text-slate-800 basis-24 sm:basis-28 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
             >
-              {"<"}
+              <ChevronLeftIcon className="block h-5 w-6" />
             </button>
             <button
               onClick={() => updateIndex(activeIndex + 1)}
               className={`${
                 activeIndex === imagesUrls.length - 1 ? "collapse" : "visible"
-              } bg-slate-100 border border-1 border-slate-800 rounded-lg rounded-md px-3 py-0 text-lg font-medium text-slate-800 basis-24 sm:basis-32 flex justify-center shadow shadow-slate-500  transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
+              } h-6 bg-slate-100 border border-1 border-slate-800 rounded-md px-0 pt-0.5 text-lg text-slate-800 basis-24 sm:basis-28 flex justify-center shadow shadow-slate-500  transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
             >
-              {">"}
+              <ChevronRightIcon className="block h-5 w-6 " />
             </button>
           </div>
         </div>
 
         <div className="flex flex-col py-4 rounded-b-lg border-t-0 border-b border-x border-terra-800 bg-terra-100">
           <h5
-            className={`${amatic.className} text-4xl font-bold text-terra-800 self-center mb-6`}
+            className={`${amatic.className} text-2xl font-bold text-terra-800 self-center mb-6`}
           >
             {name}
           </h5>
           <div className="flex flex-row w-full place-content-between mb-3">
             <button
               onClick={router.back}
-              className="ml-8 bg-slate-100 border border-1 border-slate-800 rounded-lg rounded-md px-3 py-2 text-sm font-normal text-slate-800 basis-20 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
+              className="ml-8 bg-slate-100 border border-1 border-slate-800 rounded-lg rounded-md px-2 py-1 text-sm font-normal text-slate-800 basis-20 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
             >
               Retour
             </button>
 
             <Link
               href={`/contact?id=${id}`}
-              className="mr-8 bg-slate-100 border border-1 border-slate-800 rounded-lg rounded-md px-3 py-2 text-sm font-normal text-slate-800 basis-20 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
+              className="mr-8 bg-slate-100 border border-1 border-slate-800 rounded-lg rounded-md px-2 py-1 text-sm font-normal text-slate-800 basis-20 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none"
             >
               Contact
             </Link>
