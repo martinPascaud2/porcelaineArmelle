@@ -44,8 +44,8 @@ export default function Header() {
         <Link
           href={href}
           className={classNames(
-            isActive ? `text-6xl ` : `text-5xl`,
-            `absolute top-1/2 ${amatic.className} text-bold text-slate-100 `
+            isActive ? `text-5xl ` : `text-4xl`,
+            `absolute bottom-3 ${amatic.className} font-normal tracking-widest	text-slate-100 `
           )}
         >
           {type.name}
