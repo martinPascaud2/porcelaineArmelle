@@ -31,7 +31,7 @@ const Card = ({ article }) => {
 
       <div className="p-5 rounded-b-lg border-t border-terra-800 bg-terra-100 flex flex-col">
         <h2
-          className={`${amatic.className} text-4xl text-terra-800 font-bold self-center	mb-6`}
+          className={`${amatic.className} text-2xl text-terra-800 font-bold self-center	mb-3`}
         >
           {article.titre}
         </h2>
@@ -50,7 +50,7 @@ const Card = ({ article }) => {
         <div className="flex flex-inline">
           <Link
             href={`/creations?modal=${article.id}#carousel`}
-            className={`${figtree.className} bg-slate-100 border border-slate-800 rounded-lg rounded-md mx-4 my-2 px-3 py-2 text-base font-normal text-slate-800 basis-20 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
+            className={`${figtree.className} bg-slate-100 border border-slate-800 rounded-lg rounded-md mx-4 my-2 px-2 py-1 text-sm font-normal text-slate-800 basis-20 flex justify-center shadow shadow-slate-500 transition-shadow	ease-in-out delay-0 duration-300 hover:shadow-none`}
           >
             Voir
           </Link>
