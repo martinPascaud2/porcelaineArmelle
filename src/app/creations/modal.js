@@ -101,7 +101,7 @@ export default function Modal({ name, imagesUrls, id }) {
 
         <div className="flex flex-col py-4 rounded-b-lg border-t-0 border-b border-x border-terra-800 bg-terra-100">
           <h5
-            className={`${amatic.className} text-2xl font-bold text-terra-800 self-center mb-6`}
+            className={`${amatic.className} text-2xl tracking-wide font-bold text-terra-800 self-center mb-6`}
           >
             {name}
           </h5>
