@@ -79,7 +79,7 @@ export default function Modal({ name, imagesUrls, id }) {
         />
 
         <div className="absolute bottom-32 w-full ">
-          <div className="flex flex-row justify-between sm:justify-center gap-8">
+          <div className="flex flex-row justify-between sm:justify-center gap-28">
             <button
               onClick={() => updateIndex(activeIndex - 1)}
               className={`${
