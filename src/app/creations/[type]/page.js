@@ -31,7 +31,7 @@ const Card = ({ article }) => {
 
       <div className="p-5 rounded-b-lg border-t border-terra-800 bg-terra-100 flex flex-col">
         <h2
-          className={`${amatic.className} text-2xl text-terra-800 font-bold self-center	mb-3`}
+          className={`${amatic.className} text-2xl text-terra-800 tracking-wide	font-bold self-center	mb-3`}
         >
           {article.titre}
         </h2>
@@ -112,7 +112,7 @@ export default async function Page({ params, searchParams }) {
         <div
           className={`${
             parseInt(page) > 1 && "mt-12"
-          } grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center  gap-x-12 gap-y-10`}
+          } grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 items-center gap-x-12 gap-y-10`}
         >
           {articles?.map((article) => (
             <Card key={article.id} article={article} />
