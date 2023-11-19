@@ -1,3 +1,4 @@
+import Image from "next/image";
 const { PrismaClient } = require("@prisma/client");
 const cloudinary = require("cloudinary").v2;
 cloudinary.config({
@@ -27,7 +28,13 @@ export default async function Page({ searchParams }) {
         <h1 className="w-11/12 sm:w-2/3 text-3xl text-bold text-center leading-relaxed">
           {globalPresentation}
         </h1>
-        <div>Photo de présentation</div>
+        <Image
+          alt="Photo de présentation"
+          src={`${process.env.NEXT_PUBLIC_APP_URL}/calimero.jpeg`}
+          width={1000}
+          height={1000}
+          className="mt-4"
+        />
         <ScrollToTop />
       </div>
     );
