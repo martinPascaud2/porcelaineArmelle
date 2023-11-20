@@ -33,7 +33,7 @@ export default async function Page({ searchParams }) {
           src={`${process.env.NEXT_PUBLIC_APP_URL}/calimero.jpeg`}
           width={1000}
           height={1000}
-          className="mt-4"
+          className="mt-4 mb-4 sm:mb-0"
         />
         <ScrollToTop />
       </div>
