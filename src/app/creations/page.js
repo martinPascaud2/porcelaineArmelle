@@ -30,10 +30,10 @@ export default async function Page({ searchParams }) {
         </h1>
         <Image
           alt="Photo de présentation"
-          src={`${process.env.NEXT_PUBLIC_APP_URL}/calimero.jpeg`}
+          src={`${process.env.NEXT_PUBLIC_APP_URL}/cuisson.jpeg`}
           width={1000}
           height={1000}
-          className="mt-4 mb-4 sm:mb-0"
+          className="border border-terra-800 mt-4 mb-4 sm:mb-0"
         />
         <ScrollToTop />
       </div>
