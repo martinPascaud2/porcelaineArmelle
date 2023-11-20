@@ -29,7 +29,7 @@ export default function Disclosure({ props, MainLogo }) {
       current: pathname.startsWith("/creations/"),
     },
     {
-      name: "ACTUALITÉ",
+      name: "ACTUALITÉS",
       href: "/apropos",
       current: pathname.startsWith("/apropos"),
     },
