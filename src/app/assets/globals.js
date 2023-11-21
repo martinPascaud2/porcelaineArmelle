@@ -9,8 +9,8 @@ export const types = [
   },
 
   {
-    name: "Truc",
-    imagePath: `${process.env.NEXT_PUBLIC_APP_URL}/truc.jpg`,
+    name: "Soliflores",
+    imagePath: `${process.env.NEXT_PUBLIC_APP_URL}/soliflore.jpeg`,
   },
 ];
 
