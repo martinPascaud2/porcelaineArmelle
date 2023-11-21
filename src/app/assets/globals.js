@@ -7,10 +7,13 @@ export const types = [
     name: "Coulée verte",
     imagePath: `${process.env.NEXT_PUBLIC_APP_URL}/coulée verte.jpg`,
   },
-
   {
     name: "Soliflores",
     imagePath: `${process.env.NEXT_PUBLIC_APP_URL}/soliflore.jpeg`,
+  },
+  {
+    name: "Flacons",
+    imagePath: `${process.env.NEXT_PUBLIC_APP_URL}/flacon.jpeg`,
   },
 ];
 
