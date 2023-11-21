@@ -25,7 +25,7 @@ export default async function Page({ searchParams }) {
         <div className="sticky top-48 sm:top-52 mt-6 border border-terra-800 bg-terra-100 text-terra-800 rounded-full animate-bounce">
           <ArrowUpIcon className="block m-4 h-8 w-8" />
         </div>
-        <h1 className="w-11/12 sm:w-2/3 text-3xl text-bold text-center leading-relaxed">
+        <h1 className="w-11/12 sm:w-2/3 mb-2 text-2xl text-bold text-center leading-relaxed">
           {globalPresentation}
         </h1>
         <Image
